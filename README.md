@@ -44,6 +44,7 @@ Given an identity source, <strong>EDTalk</strong> synthesizes talking face video
 Some code are borrowed from following projects:
 * [LIA](https://github.com/wyhsirius/LIA)
 * [DPE](https://github.com/OpenTalker/DPE)
+* [EAT](https://github.com/yuangan/EAT_code)
 * [PD-FGC](https://github.com/Dorniwang/PD-FGC-inference)
 * [Wav2Lip](https://github.com/Rudrabha/Wav2Lip)
 * [FOMM video preprocessing](https://github.com/AliaksandrSiarohin/video-preprocessing)
