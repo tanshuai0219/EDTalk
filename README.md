@@ -3,7 +3,7 @@ The official repository of the paper [EDTalk: Efficient Disentanglement for Emot
 
 <p align='center'>
   <b>
-    <a href="">Paper</a>
+    <a href="https://arxiv.org/abs/2404.01647">Paper</a>
     | 
     <a href="https://tanshuai0219.github.io/EDTalk/">Project Page</a>
     |
@@ -22,9 +22,9 @@ Given an identity source, <strong>EDTalk</strong> synthesizes talking face video
 
 
 ## TODO
-- [ ] **Release Arxiv paper.**
-- [ ] **Release code.**
-- [ ] **Release Pre-trained Model.**
+- [x] **Release Arxiv paper.**
+- [ ] **Release code. (Once paper accepted)**
+- [ ] **Release Pre-trained Model. (Once paper accepted)**
 
 
 
