@@ -1,5 +1,5 @@
 # EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis
-The official repository of the paper [EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis]()
+The official repository of the paper [EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis](https://arxiv.org/abs/2404.01647)
 
 <p align='center'>
   <b>
