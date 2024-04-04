@@ -23,8 +23,8 @@ Given an identity source, <strong>EDTalk</strong> synthesizes talking face video
 
 ## TODO
 - [x] **Release Arxiv paper.**
-- [ ] **Release code. (Once paper accepted)**
-- [ ] **Release Pre-trained Model. (Once paper accepted)**
+- [ ] **Release code. (Once the paper is accepted)**
+- [ ] **Release Pre-trained Model. (Once the paper is accepted)**
 
 
 
