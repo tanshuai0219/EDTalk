@@ -28,17 +28,16 @@ Given an identity source, <strong>EDTalk</strong> synthesizes talking face video
 
 
 
-<!-- ## Citation	
+## Citation	
 
 ```
-@InProceedings{peng2023synctalk,
-  title     = {SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis}, 
-  author    = {Ziqiao Peng and Wentao Hu and Yue Shi and Xiangyu Zhu and Xiaomei Zhang and Jun He and Hongyan Liu and Zhaoxin Fan},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  month     = {June},
-  year      = {2024},
+@article{tan2024edtalk,
+  title={EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis},
+  author={Tan, Shuai and Ji, Bin and Bi, Mengxiao and Pan, Ye},
+  journal={arXiv preprint arXiv:2404.01647},
+  year={2024}
 }
-``` -->
+```
 
 ## Acknowledgement
 Some code are borrowed from following projects:
