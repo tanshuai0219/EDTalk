@@ -40,13 +40,13 @@ Given an identity source, <strong>EDTalk</strong> synthesizes talking face video
 ```
 
 ## Acknowledgement
-Some code are borrowed from following projects:
+<!-- Some code are borrowed from following projects:
 * [LIA](https://github.com/wyhsirius/LIA)
 * [DPE](https://github.com/OpenTalker/DPE)
 * [EAT](https://github.com/yuangan/EAT_code)
 * [PD-FGC](https://github.com/Dorniwang/PD-FGC-inference)
 * [Wav2Lip](https://github.com/Rudrabha/Wav2Lip)
-* [FOMM video preprocessing](https://github.com/AliaksandrSiarohin/video-preprocessing)
+* [FOMM video preprocessing](https://github.com/AliaksandrSiarohin/video-preprocessing) -->
 
 Some figures in the paper is inspired by:
 * [PD-FGC](https://arxiv.org/abs/2211.14506)
