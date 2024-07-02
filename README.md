@@ -89,7 +89,7 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 ### Run the demo in audio-driven setting (EDTalk-A):
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
   ```
-  python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+  python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save
   ```
 #### Or you can input an expression reference (image/video) to indicate expression.
 
