@@ -129,7 +129,6 @@ Some figures in the paper is inspired by:
 * [PD-FGC](https://arxiv.org/abs/2211.14506)
 * [DreamTalk](https://arxiv.org/abs/2312.09767)
 
-The README.md template is borrowed from [SyncTalk](https://github.com/ziqiaopeng/SyncTalk)
 
 
 Thanks for these great projects.
