@@ -100,6 +100,8 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
   **Source_path and videos used must be first cropped using scripts [crop_image.py](data_preprocess/crop_image.py) and [crop_video.py](data_preprocess/crop_video.py)**
 
+  For images where faces only make up a small portion of the image, we recommend using the [crop_image2.py](data_preprocess/crop_image2.py) to crop image.
+
 ### Run the demo in video-driven setting (EDTalk-V):
   ```
   python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
