@@ -88,22 +88,22 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
 ### Run the demo in audio-driven setting (EDTalk-A):
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
-    ```bash
-    python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
-    ```
+  ```
+  python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+  ```
 #### Or you can input an expression reference (image/video) to indicate expression.
 
-    ```bash
-    python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
-    ```
+  ```
+  python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+  ```
   The result will be stored in save_path.
 
   **Source_path and videos used must be first cropped using scripts [crop_image.py](data_preprocess/crop_image.py) and [crop_video.py](data_preprocess/crop_video.py)**
 
 ### Run the demo in video-driven setting (EDTalk-V):
-    ```bash
-    python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
-    ```
+  ```
+  python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+  ```
   The result will be stored in save_path.
 
 ## 🎓 Citation
