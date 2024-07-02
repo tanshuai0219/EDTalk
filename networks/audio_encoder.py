@@ -49,14 +49,14 @@ class Audio2Lip(nn.Module):
         #### load the pre-trained audio_encoder 
         #self.audio_encoder = self.audio_encoder.to(device)  
         # '''
-        wav2lip_state_dict = torch.load('/data/ts/code/comparison/Wav2Lip/checkpoints/wav2lip.pth')['state_dict']
-        state_dict = self.audio_encoder.state_dict()
+        # wav2lip_state_dict = torch.load('/data/ts/code/comparison/Wav2Lip/checkpoints/wav2lip.pth')['state_dict']
+        # state_dict = self.audio_encoder.state_dict()
 
-        for k,v in wav2lip_state_dict.items():
-            if 'audio_encoder' in k:
-                # print('init:', k)
-                state_dict[k.replace('module.audio_encoder.', '')] = v
-        self.audio_encoder.load_state_dict(state_dict)
+        # for k,v in wav2lip_state_dict.items():
+        #     if 'audio_encoder' in k:
+        #         # print('init:', k)
+        #         state_dict[k.replace('module.audio_encoder.', '')] = v
+        # self.audio_encoder.load_state_dict(state_dict)
         # '''
 
         self.mapping = nn.Linear(512, 20)
