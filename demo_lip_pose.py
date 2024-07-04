@@ -200,7 +200,7 @@ if __name__ == '__main__':
     parser.add_argument("--source_path", type=str, default='test_data/identity_source.jpg')
     parser.add_argument("--audio_driving_path", type=str, default='test_data/mouth_source.wav')
     parser.add_argument("--pose_driving_path", type=str, default='test_data/pose_source1.mp4')
-    parser.add_argument("--fix_pose", type=bool, default=False)
+    parser.add_argument("--fix_pose", action="store_true", help="Fix the pose if this flag is set.")
     parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_lip_pose.mp4')
     parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')
     parser.add_argument("--model_path", type=str, default='ckpts/EDTalk_lip_pose.pt')

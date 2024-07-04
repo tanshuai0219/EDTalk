@@ -108,12 +108,12 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
 #### If you only want to change the lip motion of the identity source, run
   ```
-   python demo_lip_pose.py --fix_pose True --source_path path/to/image --audio_driving_path path/to/audio --save_path path/to/save
+   python demo_lip_pose.py --fix_pose --source_path path/to/image --audio_driving_path path/to/audio --save_path path/to/save
   ```
 ****
 #### Or you can additionally control the head poses on top of the above via pose_driving_path
   ```
-   python demo_lip_pose.py --fix_pose False --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
+   python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
   ```
 ****
 ### Run the demo in video-driven setting (EDTalk-V):
