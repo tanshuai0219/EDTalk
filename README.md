@@ -85,7 +85,7 @@ pip install -r requirements.txt
 Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link) and put them into ./ckpts.
 
 
-### Run the demo in audio-driven setting (EDTalk-A):
+### **EDTalk-A:lip+pose+exp**:Run the demo in audio-driven setting (EDTalk-A):
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
   ```
   python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save
@@ -102,7 +102,7 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   You can also use [crop_image.py](data_preprocess/crop_image.py) to crop the image, but [increase_ratio](https://github.com/tanshuai0219/EDTalk/blob/928fe3de7cf74b6a0e7db4ec90d59c85d79b8bc1/data_preprocess/crop_image.py#L76) has to be carefully set and tried several times to get the optimal result.
   <!-- For images where faces only make up a small portion of the image, we recommend using the [crop_image2.py](data_preprocess/crop_image2.py) to crop image. -->
 
-### If you don't want to change the expression of the identity source, please download the [EDTalk_lip_pose.pt](https://drive.google.com/file/d/1XkCWeph0LvQfpWb2mO4YhfUVE3qay71Z/view?usp=sharing) and put it into ./ckpts.
+### **EDTalk-A:lip+pose without exp**:If you don't want to change the expression of the identity source, please download the [EDTalk_lip_pose.pt](https://drive.google.com/file/d/1XkCWeph0LvQfpWb2mO4YhfUVE3qay71Z/view?usp=sharing) and put it into ./ckpts.
 
 #### If you only want to change the lip motion of the identity source, run
   ```
