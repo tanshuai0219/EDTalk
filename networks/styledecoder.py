@@ -711,3 +711,82 @@ class Synthesis(nn.Module):
         img = skip
 
         return img
+
+class Synthesis_lip_pose(nn.Module):
+    def __init__(self, size, style_dim, motion_dim, blur_kernel=[1, 3, 3, 1], channel_multiplier=1):
+        super(Synthesis_lip_pose, self).__init__()
+
+        self.size = size
+        self.style_dim = style_dim
+        self.motion_dim = motion_dim
+
+        self.channels = {
+            4: 512,
+            8: 512,
+            16: 512,
+            32: 512,
+            64: 256 * channel_multiplier,
+            128: 128 * channel_multiplier,
+            256: 64 * channel_multiplier,
+            512: 32 * channel_multiplier,
+            1024: 16 * channel_multiplier,
+        }
+
+        self.input = ConstantInput(self.channels[4])
+        self.conv1 = StyledConv(self.channels[4], self.channels[4], 3, style_dim, blur_kernel=blur_kernel)
+        self.to_rgb1 = ToRGB(self.channels[4], style_dim, upsample=False)
+
+        self.log_size = int(math.log(size, 2))
+        self.num_layers = (self.log_size - 2) * 2 + 1
+
+        self.convs = nn.ModuleList()
+        self.upsamples = nn.ModuleList()
+        self.to_rgbs = nn.ModuleList()
+        self.to_flows = nn.ModuleList()
+
+        in_channel = self.channels[4]
+
+        for i in range(3, self.log_size + 1):
+            out_channel = self.channels[2 ** i]
+
+            self.convs.append(StyledConv(in_channel, out_channel, 3, style_dim, upsample=True,
+                                         blur_kernel=blur_kernel))
+            self.convs.append(StyledConv(out_channel, out_channel, 3, style_dim, blur_kernel=blur_kernel))
+            self.to_rgbs.append(ToRGB(out_channel, style_dim))
+
+            self.to_flows.append(ToFlow(out_channel, style_dim))
+
+            in_channel = out_channel
+
+        self.n_latent = self.log_size * 2 - 2
+
+    def forward(self, wa, alpha, feats):
+
+        # wa: bs x style_dim torch.Size([1, 512])
+        # alpha: bs x style_dim 3个1*20的列表 
+
+        bs = wa.size(0)
+        latent = wa
+
+        inject_index = self.n_latent
+        latent = latent.unsqueeze(1).repeat(1, inject_index, 1)
+
+        out = self.input(latent) # torch.Size([1, 512, 4, 4])
+        out = self.conv1(out, latent[:, 0])
+
+        i = 1
+        for conv1, conv2, to_rgb, to_flow, feat in zip(self.convs[::2], self.convs[1::2], self.to_rgbs,
+                                                       self.to_flows, feats):
+            out = conv1(out, latent[:, i])
+            out = conv2(out, latent[:, i + 1])
+            if out.size(2) == 8:
+                out_warp, out, skip_flow = to_flow(out, latent[:, i + 2], feat)
+                skip = to_rgb(out_warp)
+            else:
+                out_warp, out, skip_flow = to_flow(out, latent[:, i + 2], feat, skip_flow)
+                skip = to_rgb(out_warp, skip)
+            i += 2
+
+        img = skip
+
+        return img
