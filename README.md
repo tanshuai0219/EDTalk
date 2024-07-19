@@ -258,10 +258,10 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_Mouth_Pose_decouple.py
     ```
-- Train Expression Decouple module:
+<!-- - Train Expression Decouple module:
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_Expression_decouple.py
-    ```
+    ``` -->
 - Train Audio2Mouth module:
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_audio2mouth.py
