@@ -46,6 +46,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
 - 2024.07.01 - 💻 The inference code and pretrained models are available.
 - 2024.07.01 - 🎉 Our paper is accepted by ECCV 2024.
 - 2024.04.02 - 🛳️ This repo is released.
@@ -121,6 +122,150 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
   ```
   The result will be stored in save_path.
+
+
+## 🎬 Data Preprocess for Training
+**Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
+- Download the MEAD and HDTF dataset:
+1) **MEAD**. [download link](https://wywu.github.io/projects/MEAD/MEAD.html). 
+
+
+    We only use *Front* videos and extract audios and orgnize the data as follows:
+
+    ```text
+    /dir_path/MEAD_front/
+    |-- Original_video
+    |   |-- M003#angry#level_1#001.mp4
+    |   |-- M003#angry#level_1#002.mp4
+    |   |-- ...
+    |-- audio
+    |   |-- M003#angry#level_1#001.wav
+    |   |-- M003#angry#level_1#002.wav
+    |   |-- ...
+    ```
+
+
+2) **HDTF**. [download link](https://github.com/MRzzm/HDTF).
+
+    We orgnize the data as follows:
+
+    ```text
+    /dir_path/HDTF/
+    |-- audios
+    |   |-- RD_Radio1_000.wav
+    |   |-- RD_Radio2_000.wav
+    |   |-- ...
+    |-- original_videos
+    |   |-- RD_Radio1_000.mp4
+    |   |-- RD_Radio2_000.mp4
+    |   |-- ...
+    ```
+
+- Crop videos in training datasets:
+    ```bash
+    python data_preprocess/data_preprocess_for_train/crop_video_MEAD.py
+    python data_preprocess/data_preprocess_for_train/crop_video_HDTF.py
+    ```
+- Split video: Since the video in HDTF is too long, we split both the video and the corresponding audio into 5s segments:
+    ```bash
+    python data_preprocess/data_preprocess_for_train/split_HDTF_video.py
+    ```
+
+    ```bash
+    python data_preprocess/data_preprocess_for_train/split_HDTF_audio.py
+    ```
+
+- We save the video frames in a lmdb file to improve I/O efficiency:
+    ```bash
+    python data_preprocess/data_preprocess_for_train/prepare_lmdb.py
+    ```
+
+- Extract mel feature from audio:
+    ```bash
+    python data_preprocess/data_preprocess_for_train/get_mel.py
+    ```
+- Extract landmarks from cropped videos:
+    ```bash
+    python data_preprocess/data_preprocess_for_train/extract_lmdk.py
+    ```
+- Extract bboxs from cropped videos for lip discriminator using [extract_bbox.py](https://github.com/yuangan/EAT_code/blob/main/preprocess/extract_bbox.py) and we give an unclean example using lmdb like :
+    ```bash
+    python data_preprocess/data_preprocess_for_train/extract_bbox.py
+    ```
+
+- After the preprocessing, the data should be orgnized as follows:
+    ```text
+    /dir_path/MEAD_front/
+    |-- Original_video
+    |   |-- M003#angry#level_1#001.mp4
+    |   |-- M003#angry#level_1#002.mp4
+    |   |-- ...
+    |-- video
+    |   |-- M003#angry#level_1#001.mp4
+    |   |-- M003#angry#level_1#002.mp4
+    |   |-- ...
+    |-- audio
+    |   |-- M003#angry#level_1#001.wav
+    |   |-- M003#angry#level_1#002.wav
+    |   |-- ...
+    |-- bbox
+    |   |-- M003#angry#level_1#001.npy
+    |   |-- M003#angry#level_1#002.npy
+    |   |-- ...
+    |-- landmark
+    |   |-- M003#angry#level_1#001.npy
+    |   |-- M003#angry#level_1#002.npy
+    |   |-- ...
+    |-- mel
+    |   |-- M003#angry#level_1#001.npy
+    |   |-- M003#angry#level_1#002.npy
+    |   |-- ...
+
+    /dir_path/HDTF/
+    |-- split_5s_video
+    |   |-- RD_Radio1_000#1.mp4
+    |   |-- RD_Radio1_000#2.mp4
+    |   |-- ...
+    |-- split_5s_audio
+    |   |-- RD_Radio1_000#1.wav
+    |   |-- RD_Radio1_000#2.wav
+    |   |-- ...
+    |-- bbox
+    |   |-- RD_Radio1_000#1.npy
+    |   |-- RD_Radio1_000#2.npy
+    |   |-- ...
+    |-- landmark
+    |   |-- RD_Radio1_000#1.npy
+    |   |-- RD_Radio1_000#2.npy
+    |   |-- ...
+    |-- mel
+    |   |-- RD_Radio1_000#1.npy
+    |   |-- RD_Radio1_000#2.npy
+    |   |-- ...
+
+    ```
+## 🎬 Start Training
+- Pretrain Encoder $E$ and Generator $G$:
+
+    - Please refer to [LIA](https://github.com/wyhsirius/LIA) to train from scratch.
+    - (Optional) If you want to accelerate convergence speed, you can download the pre-trained model of [LIA](https://github.com/wyhsirius/LIA).
+    - we provide training code to fine-tune the model on MEAD and HDTF dataset:
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 --master_port 12345 train/train_E_G.py
+    ```
+
+- Train Mouth-Pose Decouple module:
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_Mouth_Pose_decouple.py
+    ```
+- Train Expression Decouple module:
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_Expression_decouple.py
+    ```
+- Train Audio2Mouth module:
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_audio2mouth.py
+    ```
 
 ## 🎓 Citation
 
