@@ -1,0 +1,4 @@
+# put ckpts here:
+Audio2Lip.pt
+EDTalk_lip_pose.pt
+EDTalk.pt
