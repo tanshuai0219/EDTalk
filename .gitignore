@@ -1,4 +1,5 @@
 __pycache__
 *pt
 gfpgan
-/res/
+# /res/
+*.mp4

@@ -46,6 +46,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.07.31 - 💻 Add optional face super-resolution.
 - 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
 - 2024.07.01 - 💻 The inference code and pretrained models are available.
 - 2024.07.01 - 🎉 Our paper is accepted by ECCV 2024.
@@ -126,6 +127,8 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
 ## Face Super-resolution (Optional)
 
+☺️🙏 Thanks to [Tao Liu](https://github.com/liutaocode) for the proposal~
+
 The purpose is to upscale the resolution from 256 to 512 and address the issue of blurry rendering.
 
 Please install addtional environment here:
@@ -138,6 +141,24 @@ pip install gfpgan
 
 Then enable the option `--face_sr` in your scripts. The first time will download the weights of gfpgan.
 
+Here are some examples:
+
+  ```
+
+   python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save --face_sr
+
+  python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save --face_sr
+
+  python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save --face_sr
+  ```
+
+**Note:** Due to the limitations of markdown, we downsampled the results after facesr, which may be detrimental to video quality and smoothness, see the [results_by_facesr](res/results_by_facesr) for detailed results.
+
+| Source Img | EDTalk Results           | EDTalk + FaceSR           |
+|------------|--------------------------|---------------------------|
+|<img src="res/results_by_facesr/demo_lip_pose5.png" width="200" ></img> | <img src="res/results_by_facesr/gif/demo_lip_pose5.gif" width="200" ></img> |  <img src="res/results_by_facesr/gif/demo_lip_pose5_512.gif" width="200" ></img> |
+|<img src="res/results_by_facesr/demo_EDTalk_A.png" width="200" ></img> | <img src="res/results_by_facesr/gif/demo_EDTalk_A.gif" width="200" ></img> |  <img src="res/results_by_facesr/gif/demo_EDTalk_A_512.gif" width="200" ></img>      |
+|<img src="res/results_by_facesr/RD_Radio51_000.png" width="200" ></img> | <img src="res/results_by_facesr/gif/RD_Radio51_000.gif" width="200" ></img>  |   <img src="res/results_by_facesr/gif/RD_Radio51_000_512.gif" width="200" ></img>     |
 
 ## 🎬 Data Preprocess for Training
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
