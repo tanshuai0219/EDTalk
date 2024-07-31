@@ -1,7 +1,16 @@
 from torch import nn
 import torch.nn.functional as F
 import torch
+import importlib.util
 
+def check_package_installed(package_name):
+    package_spec = importlib.util.find_spec(package_name)
+    if package_spec is None:
+        print(f"{package_name} is not installed.")
+        return False
+    else:
+        print(f"{package_name} is installed.")
+        return True
 
 class AntiAliasInterpolation2d(nn.Module):
     """

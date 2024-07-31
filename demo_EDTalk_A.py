@@ -11,6 +11,8 @@ from PIL import Image
 from tqdm import tqdm
 from torchvision import transforms
 import torch.nn.functional as F
+from networks.utils import check_package_installed
+from moviepy.editor import *
 
 def load_image(filename, size):
     img = Image.open(filename).convert('RGB')
@@ -121,6 +123,10 @@ class Demo(nn.Module):
         print('==> loading data')
         self.img_source = img_preprocessing(args.source_path, args.size).cuda()
         self.audio, self.bs, self.T = audio_preprocessing(args.audio_driving_path)
+
+        if args.audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
+            print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
+           
         self.audio_path = args.audio_driving_path
         self.exp_vid_target, self.fps = vid_preprocessing(args.exp_driving_path)
         self.exp_vid_target = self.exp_vid_target.cuda()
@@ -169,7 +175,23 @@ class Demo(nn.Module):
             cmd = r'ffmpeg -y -i "%s" -i "%s" -vcodec copy "%s"' % (temp_path, self.audio_path, self.save_path)
             os.system(cmd)
             os.remove(temp_path)
+            
+            if args.face_sr and check_package_installed('gfpgan'):
+                from face_sr.face_enhancer import enhancer_list
+                import imageio
 
+                temp_512_path = self.save_path.replace('.mp4','_512.mp4')
+
+                # Super-resolution
+                imageio.mimsave(temp_512_path + '.tmp.mp4', enhancer_list(self.save_path, method='gfpgan', bg_upsampler=None), fps=float(25), codec='libx264')
+                
+                # Merge audio and video
+                video_clip = VideoFileClip(temp_512_path + '.tmp.mp4')
+                audio_clip = AudioFileClip(self.save_path)
+                final_clip = video_clip.set_audio(audio_clip)
+                final_clip.write_videofile(temp_512_path, codec='libx264', audio_codec='aac')
+                
+                os.remove(temp_512_path + '.tmp.mp4')
 
 def conv_feat(features, k_size, weight=None, sigma=1.0):
     c = features.shape[1] # torch.Size([101, 500])
@@ -211,6 +233,8 @@ if __name__ == '__main__':
     parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_A.mp4')
     parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')
     parser.add_argument("--model_path", type=str, default='ckpts/EDTalk.pt')
+    parser.add_argument('--face_sr', action='store_true', help='Face super-resolution (Optional). Please install GFPGAN first')
+
     args = parser.parse_args()
 
     demo = Demo(args)

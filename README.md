@@ -124,6 +124,21 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   The result will be stored in save_path.
 
 
+## Face Super-resolution (Optional)
+
+The purpose is to upscale the resolution from 256 to 512 and address the issue of blurry rendering.
+
+Please install addtional environment here:
+
+```
+pip install facexlib
+pip install tb-nightly -i https://mirrors.aliyun.com/pypi/simple
+pip install gfpgan
+```
+
+Then enable the option `--face_sr` in your scripts. The first time will download the weights of gfpgan.
+
+
 ## 🎬 Data Preprocess for Training
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
 - Download the MEAD and HDTF dataset:
