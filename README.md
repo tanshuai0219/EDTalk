@@ -145,7 +145,7 @@ Here are some examples:
 
   ```
 
-   python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save --face_sr
+  python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save --face_sr
 
   python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save --face_sr
 
