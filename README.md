@@ -145,7 +145,7 @@ Here are some examples:
 
   ```
 
-   python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save --face_sr
+  python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save --face_sr
 
   python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save --face_sr
 
@@ -302,6 +302,18 @@ Here are some examples:
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_audio2mouth.py
     ```
+
+## 👨‍👩‍👧‍👦 Other Talking head papers:
+
+[ICCV 23] [EMMN: Emotional Motion Memory Network for Audio-driven Emotional Talking Face Generation](http://openaccess.thecvf.com/content/ICCV2023/html/Tan_EMMN_Emotional_Motion_Memory_Network_for_Audio-driven_Emotional_Talking_Face_ICCV_2023_paper.html)
+
+[AAAI 24] [Style2Talker: High-Resolution Talking Head Generation with Emotion Style and Art Style](https://ojs.aaai.org/index.php/AAAI/article/view/28313)
+
+[AAAI 24] [Say Anything with Any Style](https://ojs.aaai.org/index.php/AAAI/article/view/28314)
+
+[CVPR 24] [FlowVQTalker: High-Quality Emotional Talking Face Generation through Normalizing Flow and Quantization](https://openaccess.thecvf.com/content/CVPR2024/html/Tan_FlowVQTalker_High-Quality_Emotional_Talking_Face_Generation_through_Normalizing_Flow_and_CVPR_2024_paper.html)
+
+
 
 ## 🎓 Citation
 
