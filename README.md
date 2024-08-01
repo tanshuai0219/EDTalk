@@ -163,9 +163,9 @@ Here are some examples:
 
 | Source Img | EDTalk Results           | EDTalk + FaceSR           |
 |------------|--------------------------|---------------------------|
-|<img src="res/results_by_facesr/demo_lip_pose5.png" width="200" ></img> |<video controls loop src="https://github.com/user-attachments/assets/f450414f-e272-49eb-a39e-0ffcb9269470" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/6ad42d0b-6c3d-498b-b16f-0bb0fc7699b7" muted="false"></video> |
-|<img src="res/results_by_facesr/demo_EDTalk_A.png" width="200" ></img> | <video controls loop src="https://github.com/user-attachments/assets/8ca59ada-507c-4d4e-a126-0e806582b4b6" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/bccea19d-513c-4c22-8c49-4aac7c7d49d0" muted="false"></video>      |
-|<img src="res/results_by_facesr/RD_Radio51_000.png" width="200" ></img> | <video controls loop src="https://github.com/user-attachments/assets/b75f5a6c-0d38-4dc2-bbfa-330290f098ba" muted="false"></video>  |   <video controls loop src="https://github.com/user-attachments/assets/644100c6-608e-4266-8b94-6b61880dddbe" muted="false"></video>     |
+|<img src="res/results_by_facesr/demo_lip_pose5.png" width="250" ></img> |<video controls loop src="https://github.com/user-attachments/assets/f450414f-e272-49eb-a39e-0ffcb9269470" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/6ad42d0b-6c3d-498b-b16f-0bb0fc7699b7" muted="false"></video> |
+|<img src="res/results_by_facesr/demo_EDTalk_A.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/8ca59ada-507c-4d4e-a126-0e806582b4b6" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/bccea19d-513c-4c22-8c49-4aac7c7d49d0" muted="false"></video>      |
+|<img src="res/results_by_facesr/RD_Radio51_000.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/b75f5a6c-0d38-4dc2-bbfa-330290f098ba" muted="false"></video>  |   <video controls loop src="https://github.com/user-attachments/assets/644100c6-608e-4266-8b94-6b61880dddbe" muted="false"></video>     |
 
 
 ## 🎬 Data Preprocess for Training
