@@ -1,4 +1,4 @@
-<!-- # ResMaster -->
+<!-- # EDTalk -->
 
 
 ### <div align="center">🚀 EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis</div> 
@@ -152,13 +152,21 @@ Here are some examples:
   python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save --face_sr
   ```
 
-**Note:** Due to the limitations of markdown, we downsampled the results after facesr, which may be detrimental to video quality and smoothness, see the [results_by_facesr](res/results_by_facesr) for detailed results.
+<!-- **Note:** Due to the limitations of markdown, we downsampled the results after facesr, which may be detrimental to video quality and smoothness, see the [results_by_facesr](res/results_by_facesr) for detailed results.
 
 | Source Img | EDTalk Results           | EDTalk + FaceSR           |
 |------------|--------------------------|---------------------------|
 |<img src="res/results_by_facesr/demo_lip_pose5.png" width="200" ></img> | <img src="res/results_by_facesr/gif/demo_lip_pose5.gif" width="200" ></img> |  <img src="res/results_by_facesr/gif/demo_lip_pose5_512.gif" width="200" ></img> |
 |<img src="res/results_by_facesr/demo_EDTalk_A.png" width="200" ></img> | <img src="res/results_by_facesr/gif/demo_EDTalk_A.gif" width="200" ></img> |  <img src="res/results_by_facesr/gif/demo_EDTalk_A_512.gif" width="200" ></img>      |
-|<img src="res/results_by_facesr/RD_Radio51_000.png" width="200" ></img> | <img src="res/results_by_facesr/gif/RD_Radio51_000.gif" width="200" ></img>  |   <img src="res/results_by_facesr/gif/RD_Radio51_000_512.gif" width="200" ></img>     |
+|<img src="res/results_by_facesr/RD_Radio51_000.png" width="200" ></img> | <img src="res/results_by_facesr/gif/RD_Radio51_000.gif" width="200" ></img>  |   <img src="res/results_by_facesr/gif/RD_Radio51_000_512.gif" width="200" ></img>     | -->
+
+
+| Source Img | EDTalk Results           | EDTalk + FaceSR           |
+|------------|--------------------------|---------------------------|
+|<img src="res/results_by_facesr/demo_lip_pose5.png" width="200" ></img> |<video controls loop src="https://github.com/user-attachments/assets/f450414f-e272-49eb-a39e-0ffcb9269470" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/6ad42d0b-6c3d-498b-b16f-0bb0fc7699b7" muted="false"></video> |
+|<img src="res/results_by_facesr/demo_EDTalk_A.png" width="200" ></img> | <video controls loop src="https://github.com/user-attachments/assets/8ca59ada-507c-4d4e-a126-0e806582b4b6" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/bccea19d-513c-4c22-8c49-4aac7c7d49d0" muted="false"></video>      |
+|<img src="res/results_by_facesr/RD_Radio51_000.png" width="200" ></img> | <video controls loop src="https://github.com/user-attachments/assets/b75f5a6c-0d38-4dc2-bbfa-330290f098ba" muted="false"></video>  |   <video controls loop src="https://github.com/user-attachments/assets/644100c6-608e-4266-8b94-6b61880dddbe" muted="false"></video>     |
+
 
 ## 🎬 Data Preprocess for Training
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
