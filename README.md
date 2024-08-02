@@ -340,7 +340,7 @@ Here are some examples:
 
 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating acolab notebook, web UI, and translation work, among others.
 
-[![contributors](https://contrib.rocks/image?repo=X-LANCE/AniTalker)](https://github.com/X-LANCE/AniTalker/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=tanshuai0219/EDTalk)](https://github.com/tanshuai0219/EDTalk/graphs/contributors)
 
 
 <div align="center">
