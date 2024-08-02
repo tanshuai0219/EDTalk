@@ -192,7 +192,7 @@ Here are some examples:
 
 
 
-## <details> <summary> 🎬 Data Preprocess for Training</summary>
+## <details> <summary> 🎬 Data Preprocess for Training </summary>
 
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
 - Download the MEAD and HDTF dataset:
