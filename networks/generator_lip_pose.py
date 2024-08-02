@@ -192,3 +192,20 @@ class Generator(nn.Module):
         latent_poseD = wa + directions_D 
         img_recon = self.dec(latent_poseD, None, feats)
         return img_recon
+
+    def test_EDTalk_V(self, img_source, lip_img_drive, pose_img_drive, h_start=None):
+
+        wa, wa_t, feats, _ = self.enc(img_source, pose_img_drive, h_start) # torch.Size([1, 512]) alpha3个torch.Size([1, 20])
+        wa_t_lip,_, _,_ = self.enc(lip_img_drive, None) # torch.Size([1, 512]) alpha3个torch.Size([1, 20])
+        shared_fc = self.fc(wa_t)
+        alpha_D_pose = self.pose_fc(shared_fc)
+        shared_fc = self.fc(wa_t_lip)
+        alpha_D_lip = self.lip_fc(shared_fc)
+
+
+        # alpha_D_pose = self.pose_fc(shared_fc)
+        alpha_D = torch.cat([alpha_D_lip, alpha_D_pose], dim=-1)
+        directions_D = self.direction_lipnonlip(alpha_D) # torch.Size([1, 512])
+        latent_poseD = wa + directions_D 
+        img_recon = self.dec(latent_poseD, None, feats)
+        return img_recon
