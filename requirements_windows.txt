@@ -1,0 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cu113
+torch==1.10.0+cu113
+torchvision==0.11.0+cu113
+
+tensorboard==2.11.2
+av==9.2.0
+numba==0.48
+numpy==1.23.0
+tqdm==4.66.4
+librosa==0.8.1
+imageio-ffmpeg==0.5.1
+moviepy==1.0.3

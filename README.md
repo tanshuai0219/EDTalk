@@ -76,10 +76,13 @@ conda activate EDTalk
 
 - python packages
 ```
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
-
+- python packages for Windows
+```
+pip install -r requirements_windows.txt
+```
 
 
 ## 🎬 Quick Start
