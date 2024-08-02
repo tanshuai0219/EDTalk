@@ -315,6 +315,7 @@ Here are some examples:
     ```
   </details>
 ## 🎬 Start Training
+<details> <summary> Start Training </summary>
 - Pretrain Encoder $E$ and Generator $G$:
 
     - Please refer to [LIA](https://github.com/wyhsirius/LIA) to train from scratch.
@@ -336,6 +337,7 @@ Here are some examples:
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_audio2mouth.py
     ```
+   </details>
 
 
 ## 🙏 Thanks to all contributors for their efforts
