@@ -192,7 +192,7 @@ Here are some examples:
 
 
 
-## 🎬 Data Preprocess for Training
+## <details><summary>🎬 Data Preprocess for Training</summary>
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
 - Download the MEAD and HDTF dataset:
 1) **MEAD**. [download link](https://wywu.github.io/projects/MEAD/MEAD.html). 
@@ -312,6 +312,7 @@ Here are some examples:
     |   |-- ...
 
     ```
+  </details>
 ## 🎬 Start Training
 - Pretrain Encoder $E$ and Generator $G$:
 
