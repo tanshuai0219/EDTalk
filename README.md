@@ -335,6 +335,22 @@ Here are some examples:
     python -m torch.distributed.launch --nproc_per_node=2 --master_port 12344 train/train_audio2mouth.py
     ```
 
+
+## 🙏 Thanks to all contributors for their efforts
+
+We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating acolab notebook, web UI, and translation work, among others.
+
+[![contributors](https://contrib.rocks/image?repo=X-LANCE/AniTalker)](https://github.com/X-LANCE/AniTalker/graphs/contributors)
+
+
+<div align="center">
+
+  ![counter](https://counter.seku.su/cmoe?name=anitalker&theme=moebooru)
+
+</div>
+
+
+
 ## 👨‍👩‍👧‍👦 Other Talking head papers:
 
 [ICCV 23] [EMMN: Emotional Motion Memory Network for Audio-driven Emotional Talking Face Generation](http://openaccess.thecvf.com/content/ICCV2023/html/Tan_EMMN_Emotional_Motion_Memory_Network_for_Audio-driven_Emotional_Talking_Face_ICCV_2023_paper.html)
