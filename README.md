@@ -96,6 +96,13 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save
   ```
   ****
+
+|  |           |         |
+  |------------|--------------------------|---------------------------|
+  |<video controls loop src="https://github.com/user-attachments/assets/09ff9885-073b-4750-bec5-f1574126d6eb" muted="false"></video> | <video controls loop src="https://github.com/user-attachments/assets/f5c7ff63-66dd-45cb-9e2d-7808fbb0fbaf" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/3dbad54f-bd23-4e28-83c7-d941e58d506a" muted="false"></video> |
+  |<video controls loop src="https://github.com/user-attachments/assets/9a1423f6-3b5d-4cfc-8658-7b9d2fd348d2" muted="false"></video> | <video controls loop src="https://github.com/user-attachments/assets/c29148f6-6083-4ef7-8b76-3340ad32a832" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/0c8fed0f-3267-4507-9c43-db7464d65abf" muted="false"></video> |
+
+  
 #### Or you can input an expression reference (image/video) to indicate expression.
 
   ```
