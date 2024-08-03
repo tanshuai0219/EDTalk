@@ -86,7 +86,7 @@ pip install -r requirements_windows.txt
 
   Thanks to [nitinmukesh](https://github.com/nitinmukesh) for providing a [Windows 11 installation tutorial](https://www.youtube.com/watch?v=KLnMyspiOMk) and welcome to follow his channel!
 
-Launch gradio interface for Windows (Thank the contributor: [newgenai79](https://github.com/newgenai79)!)
+- Launch gradio interface for Windows (Thank the contributor: [newgenai79](https://github.com/newgenai79)!)
 ```
 python webui_emotions.py
 ```
