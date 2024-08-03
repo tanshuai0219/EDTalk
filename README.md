@@ -83,7 +83,7 @@ pip install -r requirement.txt
 ```
 pip install -r requirements_windows.txt
 ```
-
+- Here is a [Windows 11 installation tutorial](https://www.youtube.com/watch?v=KLnMyspiOMk) provided by [nitinmukesh](https://github.com/nitinmukesh), Thanks!
 
 ## 🎬 Quick Start
 
