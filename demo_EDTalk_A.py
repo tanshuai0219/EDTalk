@@ -14,6 +14,7 @@ import torch.nn.functional as F
 from networks.utils import check_package_installed
 from moviepy.editor import *
 
+
 def load_image(filename, size):
     img = Image.open(filename).convert('RGB')
     img = img.resize((size, size))
