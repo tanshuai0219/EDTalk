@@ -144,22 +144,15 @@ if __name__ == "__main__":
                         help="Image shape")
     parser.add_argument("--increase", default=0.1, type=float, help='Increase bbox by this amount')
     parser.add_argument("--iou_with_initial", type=float, default=0.25, help="The minimal allowed iou with inital bbox")
-    parser.add_argument("--inp", default=None, help='Input image or video')
-    parser.add_argument("--outp", default=None, help='Input image or video')
+    parser.add_argument("--inp", default='source_video.mp4', help='Input image or video')
+    parser.add_argument("--outp", default='crop_video.mp4', help='output image or video')
     parser.add_argument("--min_frames", type=int, default=0,  help='Minimum number of frames')
     parser.add_argument("--cpu", dest="cpu", action="store_true", help="cpu mode.")
 
 
     args = parser.parse_args()
     print(args.cpu)
-
-
-    
-    video_path = "source.mp4"
-    save_video_path = "crop.mp4"
-    os.makedirs(os.path.dirname(save_video_path), exist_ok=True)
-    args.inp = video_path
-    args.outp = save_video_path        
+     
     if os.path.exists(args.outp) == False:
     
         os.makedirs(os.path.dirname(save_video_path), exist_ok=True)
