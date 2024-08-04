@@ -46,6 +46,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.08.04 - 🎉 Add gradio interface for Windows.
 - 2024.07.31 - 💻 Add optional face super-resolution.
 - 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
 - 2024.07.01 - 💻 The inference code and pretrained models are available.
@@ -116,7 +117,7 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   ```
   The result will be stored in save_path.
 
-  **Source_path and videos used must be first cropped using scripts [crop_image2.py](data_preprocess/crop_image2.py) and [crop_video.py](data_preprocess/crop_video.py)**
+  **Source_path and videos used must be first cropped using scripts [crop_image2.py](data_preprocess/crop_image2.py) (download [shape_predictor_68_face_landmarks.dat](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat)) and [crop_video.py](data_preprocess/crop_video.py)** 
 
   You can also use [crop_image.py](data_preprocess/crop_image.py) to crop the image, but [increase_ratio](https://github.com/tanshuai0219/EDTalk/blob/928fe3de7cf74b6a0e7db4ec90d59c85d79b8bc1/data_preprocess/crop_image.py#L76) has to be carefully set and tried several times to get the optimal result.
   <!-- For images where faces only make up a small portion of the image, we recommend using the [crop_image2.py](data_preprocess/crop_image2.py) to crop image. -->
