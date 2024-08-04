@@ -92,6 +92,13 @@ pip install -r requirements_windows.txt
 python webui_emotions.py
 ```
 
+<div align="center">
+  <img src="assets/image/gradio.png" width="800" ></img>
+  <br>
+</div>
+
+
+
 ## 🎬 Quick Start
 
 Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link) and put them into ./ckpts.
