@@ -121,6 +121,27 @@ class Demo(nn.Module):
         self.gen.load_state_dict(weight)
         self.gen.eval()
         print('==> loading data')
+
+
+        if args.need_crop_source_img:
+            from data_preprocess.crop_image2 import crop_image
+            print('==> croping source_img')
+            crop_path = os.path.join(os.path.dirname(args.source_path), 'crop_'+os.path.basename(args.source_path))
+            try:
+                crop_image(args.source_path, crop_path)
+                if os.path.exists(crop_path)
+                    args.source_path = crop_path
+            except:
+                print('==> crop image failed, use original source for animate')
+
+        if args.need_crop_pose_video:
+            print('==> croping pose_video')
+            crop_video_path = os.path.join(os.path.dirname(args.pose_driving_path), 'crop_'+os.path.basename(args.pose_driving_path))
+            crop_cmd = f"python data_preprocess/crop_video.py --inp {args.pose_driving_path} --outp {crop_video_path}"
+            os.system(crop_cmd)
+
+            args.pose_driving_path = crop_video_path
+        
         self.img_source = img_preprocessing(args.source_path, args.size).cuda()
         self.audio, self.bs, self.T = audio_preprocessing(args.audio_driving_path)
 
@@ -228,6 +249,10 @@ if __name__ == '__main__':
     parser.add_argument("--model_path", type=str, default='ckpts/EDTalk.pt')
     parser.add_argument('--face_sr', action='store_true', help='Face super-resolution (Optional). Please install GFPGAN first')
 
+    parser.add_argument("--need_crop_source_img", action='store_true', help='crop input source_img. Please download shape_predictor_68_face_landmarks.dat and put it in ./data_preprocess first')
+    parser.add_argument("--need_crop_pose_video", action='store_true', help='crop input pose_driving video.')
+
+    
     args = parser.parse_args()
 
     demo = Demo(args)
