@@ -19,7 +19,7 @@
 
 
 
-<br>
+
 
 <div align="center">
   <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/badge/project-EDTalk-red"></a> &ensp;
