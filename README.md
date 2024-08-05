@@ -12,7 +12,7 @@
   <br><br>
   <sup>1</sup>Shanghai Jiao Tong University<br>
   <sup>2</sup>NetEase Fuxi AI Lab<br>
-
+  <br>
 <i><strong><a href='https://eccv2024.ecva.net/' target='_blank'>ECCV 2024</a></strong></i>
 </p>
 
