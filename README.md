@@ -46,7 +46,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
-- 2024.08.04 - 🎉 Add gradio interface for Windows.
+- 2024.08.04 - 🎉 Add gradio interface.
 - 2024.07.31 - 💻 Add optional face super-resolution.
 - 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
 - 2024.07.01 - 💻 The inference code and pretrained models are available.
@@ -87,7 +87,7 @@ pip install -r requirements_windows.txt
 
   Thanks to [nitinmukesh](https://github.com/nitinmukesh) for providing a [Windows 11 installation tutorial](https://www.youtube.com/watch?v=KLnMyspiOMk) and welcome to follow his channel!
 
-- Launch gradio interface for Windows (Thank the contributor: [newgenai79](https://github.com/newgenai79)!)
+- Launch gradio interface (Thank the contributor: [newgenai79](https://github.com/newgenai79)!)
 ```
 python webui_emotions.py
 ```
