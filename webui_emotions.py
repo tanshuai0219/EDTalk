@@ -37,14 +37,19 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
     if not os.path.exists(save_path):
         return None, gr.Markdown("Error: Video generation failed. Please check your inputs and try again.")
     if face_sr == False:
+        print("here face_sr == False:")
         return gr.Video(value=save_path), None, gr.Markdown("Video (256*256 only) generated successfully!")
     
     
     elif os.path.exists(save_512_path):
+        print("here os.path.exists(save_512_path):")
         return gr.Video(value=save_path), gr.Video(value=save_512_path), gr.Markdown("Video generated successfully!")
 
+    else:
+        print("else")
+        return None, None, gr.Markdown("Video generated failed!")
 
-    return f"Output saved to: {save_path}"
+    # return f"Output saved to: {save_path}"
 
 # Create Gradio interface
 iface = gr.Interface(
