@@ -22,8 +22,9 @@
 <br>
 
 <div align="center">
-  <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/badge/project-EDTalk-blue"></a> &ensp;
+  <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/badge/project-EDTalk-red"></a> &ensp;
   <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/badge/Arxiv-EDTalk-blue"></a> &ensp;
+  <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/badge/OpenXlab-EDTalk-grenn"></a> &ensp;
 
 </div>
 
