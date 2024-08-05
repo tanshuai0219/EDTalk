@@ -9,12 +9,20 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
         pose_driving_path = pose_video if pose_video else ""
 
         # Construct the command
-        command = (
-            f"python demo_EDTalk_A_using_predefined_exp_weights.py --source_path {source_path} "
-            f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
-            f"--exp_type {exp_type} --save_path {save_path}"
-        )
+        if exp_type in ["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"]:
 
+            command = (
+                f"python demo_EDTalk_A_using_predefined_exp_weights.py --source_path {source_path} "
+                f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
+                f"--exp_type {exp_type} --save_path {save_path}"
+            )
+
+        else:
+            command = (
+                f"python demo_lip_pose.py --source_path {source_path} "
+                f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
+                f"--save_path {save_path}"
+            )
         # crop_source_img if checked
 
         if need_crop_source_img:
@@ -63,7 +71,7 @@ iface = gr.Interface(
         gr.Video(label="Select Pose Video."),  #Make sure the video is pre-processed using crop_video.py
         gr.Checkbox(label="Crop the Pose Video"),
         gr.Dropdown(
-            choices=["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"],
+            choices=["I don't wanna generate emotional expression","angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"],
             label="Select Expression Type"
         ),
         gr.Textbox(label="Enter Output Path (e.g. c:\edtalk\output\\video.mp4)"),
