@@ -22,8 +22,8 @@
 <br>
 
 <div align="center">
-  <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/static/v1?label=Project%20Page&message=Github&color=blue&logo=github-pages"></a> &ensp;
-  <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/static/v1?label=Paper&message=Arxiv&color=red&logo=arxiv"></a> &ensp;
+  <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/badge/project-EDTalk-blue"></a> &ensp;
+  <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/badge/Arxiv-EDTalk-blue"></a> &ensp;
 
 </div>
 
