@@ -5,3 +5,4 @@ gfpgan
 # /res/
 *.mp4
 *.dat
+/flagged/
