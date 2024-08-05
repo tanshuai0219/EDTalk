@@ -1,11 +1,11 @@
 import gradio as gr
 import os
 
-def run_inference(source_image, audio_file, pose_video, exp_type, save_path, face_sr):
+def run_inference(source_image, need_crop_source_img, audio_file, pose_video, need_crop_pose_video, exp_type, save_path, face_sr):
     # Get file paths
-    source_path = source_image.name if source_image else ""
-    audio_driving_path = audio_file.name if audio_file else ""
-    pose_driving_path = pose_video.name if pose_video else ""
+    source_path = source_image if source_image else ""
+    audio_driving_path = audio_file if audio_file else ""
+    pose_driving_path = pose_video if pose_video else ""
 
     # Construct the command
     command = (
@@ -13,7 +13,16 @@ def run_inference(source_image, audio_file, pose_video, exp_type, save_path, fac
         f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
         f"--exp_type {exp_type} --save_path {save_path}"
     )
-    
+
+    # crop_source_img if checked
+
+    if need_crop_source_img:
+        command += " --need_crop_source_img"
+
+    if need_crop_pose_video:
+        command += " --need_crop_pose_video"
+
+
     # Add the face_sr flag if checked
     if face_sr:
         command += " --face_sr"
@@ -27,9 +36,11 @@ def run_inference(source_image, audio_file, pose_video, exp_type, save_path, fac
 iface = gr.Interface(
     fn=run_inference,
     inputs=[
-        gr.File(label="Select Source Image. Make sure the image is pre-processed using  crop_image2.py"),
-        gr.File(label="Select Audio File"),
-        gr.File(label="Select Pose Video. Make sure the video is pre-processed using crop_video.py"),
+        gr.Image(type="filepath",label="Select Source Image."), # Make sure the image is pre-processed using  crop_image2.py
+        gr.Checkbox(label="Crop the Source Image"),
+        gr.Audio(type="filepath", label="Select Audio File"),
+        gr.Video(label="Select Pose Video."),  #Make sure the video is pre-processed using crop_video.py
+        gr.Checkbox(label="Crop the Pose Video"),
         gr.Dropdown(
             choices=["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"],
             label="Select Expression Type"
