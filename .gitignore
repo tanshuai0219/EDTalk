@@ -3,4 +3,5 @@ __pycache__
 gfpgan
 *pth
 # /res/
-# *.mp4
+*.mp4
+*.dat

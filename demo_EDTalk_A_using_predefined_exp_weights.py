@@ -122,14 +122,14 @@ class Demo(nn.Module):
         self.gen.eval()
         print('==> loading data')
 
-
+        print(args.need_crop_source_img)
         if args.need_crop_source_img:
             from data_preprocess.crop_image2 import crop_image
             print('==> croping source_img')
             crop_path = os.path.join(os.path.dirname(args.source_path), 'crop_'+os.path.basename(args.source_path))
             try:
                 crop_image(args.source_path, crop_path)
-                if os.path.exists(crop_path)
+                if os.path.exists(crop_path):
                     args.source_path = crop_path
             except:
                 print('==> crop image failed, use original source for animate')
@@ -240,9 +240,9 @@ if __name__ == '__main__':
     parser.add_argument("--latent_dim_lip", type=int, default=20)
     parser.add_argument("--latent_dim_pose", type=int, default=6)
     parser.add_argument("--latent_dim_exp", type=int, default=10)
-    parser.add_argument("--source_path", type=str, default='demo/identity_source.jpg')
-    parser.add_argument("--audio_driving_path", type=str, default='demo/mouth_source.wav')
-    parser.add_argument("--pose_driving_path", type=str, default='demo/pose_source1.mp4')
+    parser.add_argument("--source_path", type=str, default='test_data/identity_source.jpg')
+    parser.add_argument("--audio_driving_path", type=str, default='test_data/mouth_source.wav')
+    parser.add_argument("--pose_driving_path", type=str, default='test_data/pose_source1.mp4')
     parser.add_argument("--exp_type", type=str, default='angry') # ['angry', 'contempt', 'disgusted', 'fear', 'happy', 'sad', 'surprised']
     parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_A_using_weights.mp4')
     parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')

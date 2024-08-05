@@ -155,7 +155,7 @@ if __name__ == "__main__":
      
     if os.path.exists(args.outp) == False:
     
-        os.makedirs(os.path.dirname(save_video_path), exist_ok=True)
+        os.makedirs(os.path.dirname(args.outp), exist_ok=True)
 
         
         commands = process_video(args)
