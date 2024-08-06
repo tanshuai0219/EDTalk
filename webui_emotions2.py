@@ -69,7 +69,7 @@ iface = gr.Interface(
     outputs=[gr.Video(label="Generated Video (256)"),
               gr.Video(label="Generated Video (512)"),
               gr.Markdown()],
-    title="EDTalk",
+    title="EDTalk (emotions video)",
     description="Upload the necessary files and parameters to run the inference script."
 )
 

@@ -6,4 +6,3 @@ gfpgan
 *.mp4
 *.dat
 /flagged/
-webui_emotions2.py
