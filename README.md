@@ -150,6 +150,15 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 |<img src="test_data/identity_source.jpg" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/912097cf-ce92-42ca-960b-c4e0906cb0b0" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/c4e1a81c-76c1-462a-b671-9c82e37e14ad" muted="false"></video> |
 |<img src="test_data/leijun.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/4e630594-1dd2-47fb-b367-6be7a700c769" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/f1a0b477-a120-47a5-b925-00af4ff09781" muted="false"></video> |
 
+#### Change the lip motion of a source video, run:
+  ```
+   python demo_change_a_video_lip.py --source_path path/to/video --audio_driving_path path/to/audio --save_path path/to/save
+  ```
+| Source Img | results #1           | results #2          |
+|------------|--------------------------|---------------------------|
+|<video controls loop src="https://github.com/user-attachments/assets/f940a507-d28c-4cc9-abda-af82c6bbf596" muted="false"></video> | <video controls loop src="https://github.com/user-attachments/assets/d199732f-66ad-4182-9df1-0e4416ec8a51" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/328d2b9d-8e98-4814-9d6f-195dddfd80f7" muted="false"></video> |
+
+
 
 ****
 ### Run the demo in video-driven setting (EDTalk-V):
