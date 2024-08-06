@@ -22,7 +22,7 @@ def download():
     
     create_directory('ckpts')
     create_directory('gfpgan/weights')
-    move_files(base_path, '.')
+    move_files(base_path, '')
 
 if __name__ == "__main__":
     download()
