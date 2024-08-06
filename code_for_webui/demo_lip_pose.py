@@ -133,10 +133,26 @@ class Demo(nn.Module):
             except:
                 print('==> crop image failed, use original source for animate')
 
+        pose_driving_resample_path = os.path.join(os.path.dirname(pose_driving_path), 'resample_'+os.path.basename(pose_driving_path)[:-4]+'.mp4')
+
+        resample_command = f'ffmpeg -i {pose_driving_path} -r 25 {pose_driving_resample_path} -y'
+        os.system(resample_command)
+        pose_driving_path = pose_driving_resample_path
+
+        if audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
+            print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
+
+        audio_driving_resample_path = os.path.join(os.path.dirname(audio_driving_path), 'resample_'+os.path.basename(audio_driving_path)[:-4]+'.wav')
+
+        resample_command = f'ffmpeg -y -i {audio_driving_path} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {audio_driving_resample_path}'
+        os.system(resample_command)
+        audio_driving_path = audio_driving_resample_path
+        
+
         if need_crop_pose_video:
             print('==> croping pose_video')
             crop_video_path = os.path.join(os.path.dirname(pose_driving_path), 'crop_'+os.path.basename(pose_driving_path))
-            crop_cmd = f"python data_preprocess/crop_video.py --inp {pose_driving_path} --outp {crop_video_path}"
+            crop_cmd = f"python data_preprocess/crop_video.py --inp {pose_driving_path} --outp {crop_video_path} -y"
             os.system(crop_cmd)
 
             pose_driving_path = crop_video_path
@@ -144,8 +160,7 @@ class Demo(nn.Module):
 
         self.img_source = img_preprocessing(source_path, 256).cuda()
 
-        if audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
-            print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
+
 
         self.audio, self.bs, self.T = audio_preprocessing(audio_driving_path)
         self.audio_path = audio_driving_path
