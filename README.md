@@ -44,6 +44,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.08.06 - 🙏 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating acolab notebook, improved web UI, and translation work, among others.
 - 2024.08.04 - 🎉 Add gradio interface.
 - 2024.07.31 - 💻 Add optional face super-resolution.
 - 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
@@ -359,11 +360,7 @@ We hope more people can get involved, and we will promptly handle pull requests.
 [![contributors](https://contrib.rocks/image?repo=tanshuai0219/EDTalk)](https://github.com/tanshuai0219/EDTalk/graphs/contributors)
 
 
-<div align="center">
 
-  ![counter](https://counter.seku.su/cmoe?name=anitalker&theme=moebooru)
-
-</div>
 
 
 
