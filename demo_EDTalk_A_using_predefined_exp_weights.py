@@ -122,7 +122,7 @@ class Demo(nn.Module):
         self.gen.eval()
         print('==> loading data')
 
-        print(args.need_crop_source_img)
+        # print(args.need_crop_source_img)
         if args.need_crop_source_img:
             from data_preprocess.crop_image2 import crop_image
             print('==> croping source_img')
