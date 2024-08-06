@@ -1,6 +1,11 @@
 import gradio as gr
 import os
 
+from download_models_openxlab import download 
+
+# Download models and check for exists
+download()
+
 def run_inference(source_image, need_crop_source_img, audio_file, pose_video, need_crop_pose_video, exp_type, save_path, face_sr):
     # Get file paths
     try:
