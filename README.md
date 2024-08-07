@@ -141,6 +141,11 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
    python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
   ```
 
+| Source Img | EDTalk        | EDTalk + liveprotrait           |
+|------------|--------------------------|---------------------------|
+|<img src="https://github.com/user-attachments/assets/1620d456-7bbf-436b-8bad-fdcd247e9f26" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/36ae9b6d-fc96-476a-8e63-8fe318b32782" muted="false"></video> |   |
+|<img src="https://github.com/user-attachments/assets/22fd0a6a-dc00-4719-9bc8-9778fd5b0e79" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/70c27d4b-dd06-4ae1-81ad-7e4795fce541" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/5cfb1933-ec7c-48a6-8343-507f5fd4a090" muted="false"></video> |
+
 #### And control the lip motion via a driven video.
   ```
    python demo_lip_pose_V.py --source_path path/to/image --audio_driving_path path/to/audio --lip_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
