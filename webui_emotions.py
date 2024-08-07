@@ -2,10 +2,10 @@ import gradio as gr
 import os
 
 
-from download_models_openxlab import download 
+from code_for_webui.download_models_openxlab import download 
 
 # Download models and check for exists
-# download()
+download()
 
 from code_for_webui.demo_EDTalk_A_using_predefined_exp_weights import Demo as Demo_EDTalk_A_using_predefined_exp_weights
 
