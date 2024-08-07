@@ -1,6 +1,6 @@
-torch==1.10.0+cu111
-torchvision==0.11.0+cu111
-tensorboard==2.11.2
+# torch==1.10.0+cu111
+# torchvision==0.11.0+cu111
+# tensorboard==2.11.2
 av==9.2.0
 numba==0.48
 librosa==0.7.1
