@@ -6,3 +6,4 @@ gfpgan
 *.mp4
 *.dat
 /flagged/
+/tmp/

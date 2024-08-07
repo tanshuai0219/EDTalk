@@ -44,6 +44,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.08.06 - 🙏 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating a colab notebook, improved web UI, and translation work, among others.
 - 2024.08.04 - 🎉 Add gradio interface.
 - 2024.07.31 - 💻 Add optional face super-resolution.
 - 2024.07.19 - 💻 Release data preprocess codes and partial training codes (fine-tuning LIA & Mouth-Pose Decouple & Audio2Mouth). But I'm busy now and don't have enough time to clean up all the codes, but I think the current codes can be a useful reference if ones want to reproduce EDTalk or other. If you run into any problems, feel free to propose an issue!
@@ -101,6 +102,8 @@ python webui_emotions.py
 
 Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link) and put them into ./ckpts.
 
+[中文用户] 可以通过这个[链接](https://openxlab.org.cn/models/detail/tanshuai0219/EDTalk/tree/main)下载权重。
+
 
 ### **EDTalk-A:lip+pose+exp**: Run the demo in audio-driven setting (EDTalk-A):
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
@@ -140,6 +143,11 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
    python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
   ```
 
+| Source Img | EDTalk        | EDTalk + liveprotrait           |
+|------------|--------------------------|---------------------------|
+|<img src="https://github.com/user-attachments/assets/1620d456-7bbf-436b-8bad-fdcd247e9f26" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/36ae9b6d-fc96-476a-8e63-8fe318b32782" muted="false"></video> |  |
+|<img src="https://github.com/user-attachments/assets/22fd0a6a-dc00-4719-9bc8-9778fd5b0e79" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/70c27d4b-dd06-4ae1-81ad-7e4795fce541" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/5cfb1933-ec7c-48a6-8343-507f5fd4a090" muted="false"></video> |
+
 #### And control the lip motion via a driven video.
   ```
    python demo_lip_pose_V.py --source_path path/to/image --audio_driving_path path/to/audio --lip_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
@@ -148,6 +156,15 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 |------------|--------------------------|---------------------------|
 |<img src="test_data/identity_source.jpg" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/912097cf-ce92-42ca-960b-c4e0906cb0b0" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/c4e1a81c-76c1-462a-b671-9c82e37e14ad" muted="false"></video> |
 |<img src="test_data/leijun.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/4e630594-1dd2-47fb-b367-6be7a700c769" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/f1a0b477-a120-47a5-b925-00af4ff09781" muted="false"></video> |
+
+#### Change the lip motion of a source video, run:
+  ```
+   python demo_change_a_video_lip.py --source_path path/to/video --audio_driving_path path/to/audio --save_path path/to/save
+  ```
+| Source Img | results #1           | results #2          |
+|------------|--------------------------|---------------------------|
+|<video controls loop src="https://github.com/user-attachments/assets/f940a507-d28c-4cc9-abda-af82c6bbf596" muted="false"></video> | <video controls loop src="https://github.com/user-attachments/assets/d199732f-66ad-4182-9df1-0e4416ec8a51" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/328d2b9d-8e98-4814-9d6f-195dddfd80f7" muted="false"></video> |
+
 
 
 ****
@@ -359,11 +376,7 @@ We hope more people can get involved, and we will promptly handle pull requests.
 [![contributors](https://contrib.rocks/image?repo=tanshuai0219/EDTalk)](https://github.com/tanshuai0219/EDTalk/graphs/contributors)
 
 
-<div align="center">
 
-  ![counter](https://counter.seku.su/cmoe?name=anitalker&theme=moebooru)
-
-</div>
 
 
 

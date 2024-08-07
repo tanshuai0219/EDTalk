@@ -1,12 +1,20 @@
 import gradio as gr
 import os
 
+
 from download_models_openxlab import download 
 
 # Download models and check for exists
-download()
+# download()
 
-def run_inference(source_image, need_crop_source_img, audio_file, pose_video, need_crop_pose_video, exp_type, save_path, face_sr):
+from code_for_webui.demo_EDTalk_A_using_predefined_exp_weights import Demo as Demo_EDTalk_A_using_predefined_exp_weights
+
+from code_for_webui.demo_lip_pose import Demo as Demo_lip_pose
+
+demo_lip_pose = Demo_lip_pose()
+demo_EDTalk_A_using_predefined_exp_weights = Demo_EDTalk_A_using_predefined_exp_weights()
+
+def run_inference(source_image, need_crop_source_img, audio_file, pose_video, need_crop_pose_video, exp_type, face_sr):
     # Get file paths
     try:
         source_path = source_image if source_image else ""
@@ -16,34 +24,16 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
         # Construct the command
         if exp_type in ["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"]:
 
-            command = (
-                f"python demo_EDTalk_A_using_predefined_exp_weights.py --source_path {source_path} "
-                f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
-                f"--exp_type {exp_type} --save_path {save_path}"
-            )
-
+            # command = (
+            #     f"python demo_EDTalk_A_using_predefined_exp_weights.py --source_path {source_path} "
+            #     f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
+            #     f"--exp_type {exp_type} --save_path {save_path}"
+            # )
+            demo_EDTalk_A_using_predefined_exp_weights.process_data(source_path, pose_driving_path, audio_driving_path, exp_type, need_crop_source_img, need_crop_pose_video, face_sr)
+            save_path = demo_EDTalk_A_using_predefined_exp_weights.run()
         else:
-            command = (
-                f"python demo_lip_pose.py --source_path {source_path} "
-                f"--audio_driving_path {audio_driving_path} --pose_driving_path {pose_driving_path} "
-                f"--save_path {save_path}"
-            )
-        # crop_source_img if checked
-
-        if need_crop_source_img:
-            command += " --need_crop_source_img"
-
-        if need_crop_pose_video:
-            command += " --need_crop_pose_video"
-
-
-        # Add the face_sr flag if checked
-        if face_sr:
-            command += " --face_sr"
-        
-        print(command)  # For debugging, you can remove this line later
-        # Run the command
-        os.system(command)
+            demo_lip_pose.process_data(source_path, pose_driving_path, audio_driving_path, need_crop_source_img, need_crop_pose_video, face_sr)
+            save_path = demo_lip_pose.run()
 
         save_512_path = save_path.replace('.mp4','_512.mp4')
 
@@ -79,14 +69,13 @@ iface = gr.Interface(
             choices=["I don't wanna generate emotional expression","angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"],
             label="Select Expression Type"
         ),
-        gr.Textbox(label="Enter Output Path (e.g. c:\edtalk\output\\video.mp4)"),
         gr.Checkbox(label="Use Face Super-Resolution")
     ],
     # outputs="text",
     outputs=[gr.Video(label="Generated Video (256)"),
               gr.Video(label="Generated Video (512)"),
               gr.Markdown()],
-    title="EDTalk (emotions video)",
+    title="EDTalk",
     description="Upload the necessary files and parameters to run the inference script."
 )
 

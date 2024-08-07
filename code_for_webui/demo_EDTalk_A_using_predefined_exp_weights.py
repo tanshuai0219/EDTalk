@@ -1,7 +1,7 @@
 import os, sys
 import torch
 import torch.nn as nn
-from networks.generator_lip_pose import Generator
+from networks.generator import Generator
 from networks.audio_encoder import Audio2Lip
 import argparse
 import numpy as np
@@ -13,6 +13,7 @@ from torchvision import transforms
 import torch.nn.functional as F
 from networks.utils import check_package_installed
 from moviepy.editor import *
+import time
 
 def load_image(filename, size):
     img = Image.open(filename).convert('RGB')
@@ -105,57 +106,73 @@ def audio_preprocessing(wav_path):
     return source_audio_feature, bs, T
 
 class Demo(nn.Module):
-    def __init__(self, args):
+    def __init__(self):
         super(Demo, self).__init__()
 
-        self.args = args
-        model_path = args.model_path
-        audio2lip_model_path = args.audio2lip_model_path
         print('==> loading model')
         self.audio2lip = Audio2Lip().cuda()
-        weight = torch.load(audio2lip_model_path, map_location=lambda storage, loc: storage)['audio2lip']
+        weight = torch.load('ckpts/Audio2Lip.pt', map_location=lambda storage, loc: storage)['audio2lip']
         self.audio2lip.load_state_dict(weight)
         self.audio2lip.eval()
-        self.gen = Generator().cuda()
-        weight = torch.load(model_path, map_location=lambda storage, loc: storage)['gen']
+        self.gen = Generator(256, 512, 20, 6, 10, 1).cuda()
+        weight = torch.load('ckpts/EDTalk.pt', map_location=lambda storage, loc: storage)['gen']
         self.gen.load_state_dict(weight)
         self.gen.eval()
+
+    def process_data(self, source_path, pose_driving_path, audio_driving_path, exp_type, need_crop_source_img, need_crop_pose_video, face_sr, fix_pose=False):
+
+        self.face_sr = face_sr
         print('==> loading data')
 
-
-        if args.need_crop_source_img:
+        # print(args.need_crop_source_img)
+        if need_crop_source_img:
             from data_preprocess.crop_image2 import crop_image
             print('==> croping source_img')
-            crop_path = os.path.join(os.path.dirname(args.source_path), 'crop_'+os.path.basename(args.source_path))
+            crop_path = os.path.join(os.path.dirname(source_path), 'crop_'+os.path.basename(source_path))
             try:
-                crop_image(args.source_path, crop_path)
+                crop_image(source_path, crop_path)
                 if os.path.exists(crop_path):
-                    args.source_path = crop_path
+                    source_path = crop_path
             except:
                 print('==> crop image failed, use original source for animate')
 
-        if args.need_crop_pose_video:
-            print('==> croping pose_video')
-            crop_video_path = os.path.join(os.path.dirname(args.pose_driving_path), 'crop_'+os.path.basename(args.pose_driving_path))
-            crop_cmd = f"python data_preprocess/crop_video.py --inp {args.pose_driving_path} --outp {crop_video_path}"
-            os.system(crop_cmd)
+        pose_driving_resample_path = os.path.join(os.path.dirname(pose_driving_path), 'resample_'+os.path.basename(pose_driving_path)[:-4]+'.mp4')
 
-            args.pose_driving_path = crop_video_path
-        
+        resample_command = f'ffmpeg -i {pose_driving_path} -r 25 {pose_driving_resample_path}'
+        os.system(resample_command)
+        pose_driving_path = pose_driving_resample_path
 
-        self.img_source = img_preprocessing(args.source_path, args.size).cuda()
-
-        if args.audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
+        if audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
             print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
 
-        self.audio, self.bs, self.T = audio_preprocessing(args.audio_driving_path)
-        self.audio_path = args.audio_driving_path
-        self.save_path = args.save_path
-        self.fps = 25
-        if self.args.fix_pose == False:
+        audio_driving_resample_path = os.path.join(os.path.dirname(audio_driving_path), 'resample_'+os.path.basename(audio_driving_path)[:-4]+'.wav')
 
-            self.pose_vid_target, self.fps = vid_preprocessing(args.pose_driving_path)
-            self.pose_vid_target = self.pose_vid_target.cuda()
+        resample_command = f'ffmpeg -y -i {audio_driving_path} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {audio_driving_resample_path}'
+        os.system(resample_command)
+        audio_driving_path = audio_driving_resample_path
+
+        if need_crop_pose_video:
+            print('==> croping pose_video')
+            crop_video_path = os.path.join(os.path.dirname(pose_driving_path), 'crop_'+os.path.basename(pose_driving_path))
+            crop_cmd = f"python data_preprocess/crop_video.py --inp {pose_driving_path} --outp {crop_video_path}"
+            os.system(crop_cmd)
+
+            pose_driving_path = crop_video_path
+        
+        self.img_source = img_preprocessing(source_path, 256).cuda()
+        self.audio, self.bs, self.T = audio_preprocessing(audio_driving_path)
+
+        if audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
+            print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
+           
+        self.audio_path = audio_driving_path
+
+        self.exp_vid_target = np.load(os.path.join('ckpts/predefined_exp_weights', exp_type+'.npy'))
+        self.exp_vid_target = torch.from_numpy(self.exp_vid_target).cuda()
+
+        self.save_path = 'code_for_webui/tmp/'+str(time.time())+'.mp4'
+        self.pose_vid_target, self.fps = vid_preprocessing(pose_driving_path)
+        self.pose_vid_target = self.pose_vid_target.cuda()
 
     def run(self):
 
@@ -168,19 +185,17 @@ class Demo(nn.Module):
             h_start = None
             self.lip_vid_target = self.audio2lip(self.audio, self.bs, self.T)[0]
             self.lip_vid_target = conv_feat(self.lip_vid_target, k_size=3, sigma=1) # torch.Size([372, 500])
-            if self.args.fix_pose == False:
-                len_pose = self.pose_vid_target.shape[1]
+
+            len_pose = self.pose_vid_target.shape[1]
 
             for i in tqdm(range(self.lip_vid_target.size(0))):
                 img_target_lip = self.lip_vid_target[i:i+1]
-                if self.args.fix_pose == False:
-                    if i>=len_pose:
-                        img_target_pose = self.pose_vid_target[:, -1, :, :, :]
-                    else:
-                        img_target_pose = self.pose_vid_target[:, i, :, :, :]
+                if i>=len_pose:
+                    img_target_pose = self.pose_vid_target[:, -1, :, :, :]
                 else:
-                    img_target_pose = self.img_source
-                img_recon = self.gen.test_from_audio_pose_image(self.img_source, img_target_lip, img_target_pose, h_start)
+                    img_target_pose = self.pose_vid_target[:, i, :, :, :]
+
+                img_recon = self.gen.test_EDTalk_A_use_exp_weight(self.img_source, img_target_lip, img_target_pose, self.exp_vid_target, h_start)
                 
                 vid_target_recon.append(img_recon.unsqueeze(2))
 
@@ -192,7 +207,7 @@ class Demo(nn.Module):
             os.system(cmd)
             os.remove(temp_path)
 
-            if args.face_sr and check_package_installed('gfpgan'):
+            if self.face_sr and check_package_installed('gfpgan'):
                 from face_sr.face_enhancer import enhancer_list
                 import imageio
 
@@ -209,7 +224,8 @@ class Demo(nn.Module):
                 
                 os.remove(temp_512_path + '.tmp.mp4')
 
-
+        return self.save_path
+    
 def conv_feat(features, k_size, weight=None, sigma=1.0):
     c = features.shape[1] # torch.Size([101, 500])
     if weight is None:
@@ -232,33 +248,5 @@ def conv_feat(features, k_size, weight=None, sigma=1.0):
     features = features.permute(0, 2, 1).squeeze(0)
 
     return features
-
-if __name__ == '__main__':
-    # training params
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--size", type=int, default=256)
-    parser.add_argument("--channel_multiplier", type=int, default=1)
-    parser.add_argument("--model", type=str, choices=['vox', 'taichi', 'ted'], default='vox')
-    parser.add_argument("--latent_dim_style", type=int, default=512)
-    parser.add_argument("--latent_dim_lip", type=int, default=20)
-    parser.add_argument("--latent_dim_pose", type=int, default=6)
-    parser.add_argument("--latent_dim_exp", type=int, default=10)
-    parser.add_argument("--source_path", type=str, default='test_data/identity_source.jpg')
-    parser.add_argument("--audio_driving_path", type=str, default='test_data/mouth_source.wav')
-    parser.add_argument("--pose_driving_path", type=str, default='test_data/pose_source1.mp4')
-    parser.add_argument("--fix_pose", action="store_true", help="Fix the pose if this flag is set.")
-    parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_lip_pose.mp4')
-    parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')
-    parser.add_argument("--model_path", type=str, default='ckpts/EDTalk_lip_pose.pt')
-    parser.add_argument('--face_sr', action='store_true', help='Face super-resolution (Optional). Please install GFPGAN first')
-
-    parser.add_argument("--need_crop_source_img", action='store_true', help='crop input source_img. Please download shape_predictor_68_face_landmarks.dat and put it in ./data_preprocess first')
-    parser.add_argument("--need_crop_pose_video", action='store_true', help='crop input pose_driving video.')
-
-
-    args = parser.parse_args()
-
-    demo = Demo(args)
-    demo.run()
 
 

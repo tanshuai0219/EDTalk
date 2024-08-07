@@ -123,27 +123,14 @@ class Demo(nn.Module):
         print('==> loading data')
 
 
-        if args.need_crop_source_img:
-            from data_preprocess.crop_image2 import crop_image
-            print('==> croping source_img')
-            crop_path = os.path.join(os.path.dirname(args.source_path), 'crop_'+os.path.basename(args.source_path))
-            try:
-                crop_image(args.source_path, crop_path)
-                if os.path.exists(crop_path):
-                    args.source_path = crop_path
-            except:
-                print('==> crop image failed, use original source for animate')
-
         if args.need_crop_pose_video:
             print('==> croping pose_video')
-            crop_video_path = os.path.join(os.path.dirname(args.pose_driving_path), 'crop_'+os.path.basename(args.pose_driving_path))
-            crop_cmd = f"python data_preprocess/crop_video.py --inp {args.pose_driving_path} --outp {crop_video_path}"
+            crop_video_path = os.path.join(os.path.dirname(args.source_path), 'crop_'+os.path.basename(args.source_path))
+            crop_cmd = f"python data_preprocess/crop_video.py --inp {args.source_path} --outp {crop_video_path}"
             os.system(crop_cmd)
 
-            args.pose_driving_path = crop_video_path
+            args.source_path = crop_video_path
         
-
-        self.img_source = img_preprocessing(args.source_path, args.size).cuda()
 
         if args.audio_driving_path.endswith(('.mp4', '.avi', '.mov', '.mkv')):
             print("Warning: The provided audio_driving_path is in video format. Please provide an audio file.")
@@ -152,10 +139,10 @@ class Demo(nn.Module):
         self.audio_path = args.audio_driving_path
         self.save_path = args.save_path
         self.fps = 25
-        if self.args.fix_pose == False:
 
-            self.pose_vid_target, self.fps = vid_preprocessing(args.pose_driving_path)
-            self.pose_vid_target = self.pose_vid_target.cuda()
+
+        self.img_source , self.fps = vid_preprocessing(args.source_path)
+        self.img_source  = self.img_source .cuda()
 
     def run(self):
 
@@ -168,19 +155,18 @@ class Demo(nn.Module):
             h_start = None
             self.lip_vid_target = self.audio2lip(self.audio, self.bs, self.T)[0]
             self.lip_vid_target = conv_feat(self.lip_vid_target, k_size=3, sigma=1) # torch.Size([372, 500])
-            if self.args.fix_pose == False:
-                len_pose = self.pose_vid_target.shape[1]
+
+            len_pose = self.img_source.shape[1]
 
             for i in tqdm(range(self.lip_vid_target.size(0))):
                 img_target_lip = self.lip_vid_target[i:i+1]
-                if self.args.fix_pose == False:
-                    if i>=len_pose:
-                        img_target_pose = self.pose_vid_target[:, -1, :, :, :]
-                    else:
-                        img_target_pose = self.pose_vid_target[:, i, :, :, :]
+
+                if i>=len_pose:
+                    img_target_pose = self.img_source[:, -1, :, :, :]
                 else:
-                    img_target_pose = self.img_source
-                img_recon = self.gen.test_from_audio_pose_image(self.img_source, img_target_lip, img_target_pose, h_start)
+                    img_target_pose = self.img_source[:, i, :, :, :]
+
+                img_recon = self.gen.test_from_audio_pose_image(img_target_pose, img_target_lip, img_target_pose, h_start)
                 
                 vid_target_recon.append(img_recon.unsqueeze(2))
 
@@ -243,11 +229,9 @@ if __name__ == '__main__':
     parser.add_argument("--latent_dim_lip", type=int, default=20)
     parser.add_argument("--latent_dim_pose", type=int, default=6)
     parser.add_argument("--latent_dim_exp", type=int, default=10)
-    parser.add_argument("--source_path", type=str, default='test_data/identity_source.jpg')
-    parser.add_argument("--audio_driving_path", type=str, default='test_data/mouth_source.wav')
-    parser.add_argument("--pose_driving_path", type=str, default='test_data/pose_source1.mp4')
-    parser.add_argument("--fix_pose", action="store_true", help="Fix the pose if this flag is set.")
-    parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_lip_pose.mp4')
+    parser.add_argument("--source_path", type=str, default='test_data/pose_source1.mp4')
+    parser.add_argument("--audio_driving_path", type=str, default='test_data/teaser.mp3')
+    parser.add_argument("--save_path", type=str, default='res/demo_change_a_video_lip_teaser.mp4')
     parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')
     parser.add_argument("--model_path", type=str, default='ckpts/EDTalk_lip_pose.pt')
     parser.add_argument('--face_sr', action='store_true', help='Face super-resolution (Optional). Please install GFPGAN first')
