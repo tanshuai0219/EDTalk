@@ -102,6 +102,8 @@ python webui_emotions.py
 
 Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link) and put them into ./ckpts.
 
+[中文用户] 可以通过这个[链接](https://openxlab.org.cn/models/detail/tanshuai0219/EDTalk/tree/main)下载权重。
+
 
 ### **EDTalk-A:lip+pose+exp**: Run the demo in audio-driven setting (EDTalk-A):
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
@@ -143,7 +145,7 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
 | Source Img | EDTalk        | EDTalk + liveprotrait           |
 |------------|--------------------------|---------------------------|
-|<img src="https://github.com/user-attachments/assets/1620d456-7bbf-436b-8bad-fdcd247e9f26" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/36ae9b6d-fc96-476a-8e63-8fe318b32782" muted="false"></video> |   |
+|<img src="https://github.com/user-attachments/assets/1620d456-7bbf-436b-8bad-fdcd247e9f26" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/36ae9b6d-fc96-476a-8e63-8fe318b32782" muted="false"></video> |  |
 |<img src="https://github.com/user-attachments/assets/22fd0a6a-dc00-4719-9bc8-9778fd5b0e79" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/70c27d4b-dd06-4ae1-81ad-7e4795fce541" muted="false"></video> |  <video controls loop src="https://github.com/user-attachments/assets/5cfb1933-ec7c-48a6-8343-507f5fd4a090" muted="false"></video> |
 
 #### And control the lip motion via a driven video.
