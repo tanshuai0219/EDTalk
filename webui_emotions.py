@@ -1,6 +1,12 @@
 import gradio as gr
 import os
 
+
+from download_models_openxlab import download 
+
+# Download models and check for exists
+# download()
+
 from code_for_webui.demo_EDTalk_A_using_predefined_exp_weights import Demo as Demo_EDTalk_A_using_predefined_exp_weights
 
 from code_for_webui.demo_lip_pose import Demo as Demo_lip_pose
