@@ -5,24 +5,39 @@ def create_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
-def move_files(src_dir, dest_dir):
-    # 移动ckpts文件夹中的所有文件到新目录
-    shutil.move(src_dir + '/ckpts/*', dest_dir + '/ckpts/')
-    # 移动EDTalk_lip_pose.pt文件到新目录
-    shutil.move(src_dir + '/EDTalk_lip_pose.pt', dest_dir + '/ckpts/')
-    # 移动gfpgan文件夹中的所有文件到新目录
-    shutil.move(src_dir + '/gfpgan/*', dest_dir + '/gfpgan/weights/')
-
 def download():    
     base_path = './ckpt_models'
     create_directory(base_path)          
     os.system(f'git clone https://code.openxlab.org.cn/tanshuai0219/EDTalk.git {base_path}')
     os.system(f'cd {base_path} && git lfs pull')  
+    move_files()
+    cleanup()
+
+def move_files():
+    # 移动 ckpts 文件夹中的文件
+    source_ckpts = os.path.join('ckpt_models', 'ckpts')
+    dest_ckpts = 'ckpts'
+    create_directory(dest_ckpts)
     
+    for file in os.listdir(source_ckpts):
+        shutil.move(os.path.join(source_ckpts, file), dest_ckpts)
     
-    create_directory('ckpts')
-    create_directory('gfpgan/weights')
-    move_files(base_path, '')
+    # 移动 EDTalk_lip_pose.pt
+    shutil.move(os.path.join('ckpt_models', 'EDTalk_lip_pose.pt'), dest_ckpts)
+    
+    # 移动 gfpgan 文件夹中的文件
+    source_gfpgan = os.path.join('ckpt_models', 'gfpgan')
+    dest_gfpgan = os.path.join('gfpgan', 'weights')
+    create_directory(dest_gfpgan)
+    
+    for file in os.listdir(source_gfpgan):
+        shutil.move(os.path.join(source_gfpgan, file), dest_gfpgan)
+
+def cleanup():
+    # 删除原始的 ckpt_models 文件夹
+    shutil.rmtree('ckpt_models')
 
 if __name__ == "__main__":
     download()
+    move_files()
+    cleanup()
