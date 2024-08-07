@@ -6,6 +6,5 @@ numba==0.48
 librosa==0.7.1
 numpy==1.23.0
 tqdm==4.66.4
-librosa==0.8.1
 imageio-ffmpeg==0.5.1
 moviepy==1.0.3
