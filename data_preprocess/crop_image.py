@@ -73,4 +73,4 @@ def crop_src_image(src_img, save_img, increase_ratio, detector=None):
         # img = cv2.resize(img, (256, 256))
         # cv2.imwrite(save_img, img)
 
-crop_src_image('source_img.jpg', 'save_img.jpg', increase_ratio = 0.8)
+crop_src_image('test_data/test_chinese/person3.png', 'test_data/test_chinese/person3_crop.png', increase_ratio = 0.8)

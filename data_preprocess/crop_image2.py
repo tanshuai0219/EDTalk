@@ -126,7 +126,7 @@ def proc_audio(src_mouth_path, dst_audio_path):
 if __name__ == "__main__":
 
 
-    image_path ='source_image.png'
-    save_path = 'crop_image.png'
+    image_path ='test_data/test_chinese/person3.png'
+    save_path = 'test_data/test_chinese/person3_crop.png'
     crop_image(image_path, save_path)
 

@@ -76,7 +76,7 @@ conda activate EDTalk
 
 - python packages
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 - python packages for Windows
