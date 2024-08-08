@@ -44,6 +44,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2024.08.06 - 💻 Add the training code for fine-tuning on a specific person, and we take Obama as example.
 - 2024.08.06 - 🙏 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating a colab notebook, improved web UI, and translation work, among others.
 - 2024.08.04 - 🎉 Add gradio interface.
 - 2024.07.31 - 💻 Add optional face super-resolution.
@@ -220,8 +221,27 @@ Here are some examples:
 |<img src="res/results_by_facesr/RD_Radio51_000.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/b75f5a6c-0d38-4dc2-bbfa-330290f098ba" muted="false"></video>  |   <video controls loop src="https://github.com/user-attachments/assets/644100c6-608e-4266-8b94-6b61880dddbe" muted="false"></video>     |
 
 
+## 🎬 Fine tune on a specific person
+**Note**: We take Obama and the path in my computer (/data/ts/xxxxxx) as example and you should replace it with your own path:
 
-##  🎬 Data Preprocess for Training </summary>
+- Download the Obama data from [AD-Nerf](https://github.com/YudongGuo/AD-NeRF/blob/master/dataset/vids/Obama.mp4) and put it in '/data/ts/datasets/person_specific_dataset/AD-NeRF/video/Obama.mp4'
+
+- Crop video and resample as 25 fps:
+    ```bash
+    python data_preprocess/crop_video.py --inp /data/ts/datasets/person_specific_dataset/AD-NeRF/video/Obama.mp4  --outp /data/ts/datasets/person_specific_dataset/AD-NeRF/video_crop/Obama.mp4 
+    ```
+- Save video as frames:
+    ```bash
+    ffmpeg -i /data/ts/datasets/person_specific_dataset/AD-NeRF/video_crop/Obama.mp4 -r 25 -f image2 /data/ts/datasets/person_specific_dataset/AD-NeRF/video_crop_frame/Obama/%4d.png
+    ```
+
+- Start training:
+    ```bash
+    python train_fine_tune.py --datapath /data/ts/datasets/person_specific_dataset/AD-NeRF/video_crop_frame/Obama --only_fine_tune_dec
+    ```
+  Change datapath as your own data. only_fine_tune_dec means only training dec module. In my experience, training only dec can help with image quality. You can 
+
+##  🎬 Data Preprocess for Training
 <details> <summary> Data Preprocess for Training </summary>
 **Note**: The functions provided are available, but one should adjust the way they are called, e.g. by modifying the path to the data. If you run into any problems, feel free to leave your problems!
 - Download the MEAD and HDTF dataset:

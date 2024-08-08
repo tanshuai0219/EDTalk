@@ -203,7 +203,7 @@ class ResBlock(nn.Module):
 
 
 class Discriminator(nn.Module):
-    def __init__(self, size, channel_multiplier=1, blur_kernel=[1, 3, 3, 1]):
+    def __init__(self, size=256, channel_multiplier=1, blur_kernel=[1, 3, 3, 1]):
         super().__init__()
 
         self.size = size
