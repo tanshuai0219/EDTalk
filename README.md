@@ -239,7 +239,14 @@ Here are some examples:
     ```bash
     python train_fine_tune.py --datapath /data/ts/datasets/person_specific_dataset/AD-NeRF/video_crop_frame/Obama --only_fine_tune_dec
     ```
-  Change datapath as your own data. only_fine_tune_dec means only training dec module. In my experience, training only dec can help with image quality. You can 
+  Change datapath as your own data. only_fine_tune_dec means only training dec module. In my experience, training only dec can help with image quality, so we recommend it. You also can set it as False, and it means to fune tune full model. You should go through the saved samples (at exp_path/exp_name/checkpoint and in my case, at: /data/ts/checkpoints/EDTalk/fine_tune/Obama/checkpoint) frequently to find the optimal model in time.
+
+
+| Step #0 | Step #100          | Step #200          |
+|------------|--------------------------|---------------------------|
+|<img src="fine_tune/examples/step_00000.jpg" width="250" ></img> | <img src="fine_tune/examples/step_00200.jpg" width="250" ></img> |  <img src="fine_tune/examples/step_00400.jpg" width="250" ></img> |
+
+    First line is source image, second line is driving image, and third line is generated results.
 
 ##  🎬 Data Preprocess for Training
 <details> <summary> Data Preprocess for Training </summary>

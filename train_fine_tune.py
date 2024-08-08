@@ -173,7 +173,7 @@ if __name__ == "__main__":
     parser.add_argument("--lr", type=float, default=0.002)
     parser.add_argument("--start_iter", type=int, default=0)
     parser.add_argument("--display_freq", type=int, default=20)
-    parser.add_argument("--save_freq", type=int, default=100)
+    parser.add_argument("--save_freq", type=int, default=10000)
     parser.add_argument("--exp_path", type=str, default='/data/ts/checkpoints/EDTalk/fine_tune/')
     parser.add_argument("--exp_name", type=str, default='Obama')
     parser.add_argument("--addr", type=str, default='localhost')
