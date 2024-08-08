@@ -3,6 +3,7 @@
 # tensorboard==2.11.2
 # av==9.2.0
 numba==0.48
+lvmlite==0.31.0
 librosa==0.7.2
 # numpy==1.23.0
 # tqdm==4.66.4
