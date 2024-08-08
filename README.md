@@ -395,12 +395,13 @@ We hope more people can get involved, and we will promptly handle pull requests.
 ## 🎓 Citation
 
 ```
-@article{tan2024edtalk,
-  title={EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis},
-  author={Tan, Shuai and Ji, Bin and Bi, Mengxiao and Pan, Ye},
-  journal={arXiv preprint arXiv:2404.01647},
-  year={2024}
+@inproceedings{tan2024edtalk,
+  title = {EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis},
+  author = {Tan, Shuai and Ji, Bin and Bi, Mengxiao and Pan, Ye},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  year = {2024}
 }
+
 ```
 
 ## 🙏 Acknowledgement
