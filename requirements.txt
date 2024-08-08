@@ -5,11 +5,12 @@
 # numba ==0.48
 # lvmlite==0.31.0
 # librosa==0.7.2
-# numpy==1.23.0
-# tqdm==4.66.4
-# imageio-ffmpeg==0.5.1
 
-numba
-lvmlite
-librosa
+
+numpy==1.23.0
+tqdm==4.66.4
+imageio-ffmpeg==0.5.1
+
+numba==0.53.0
+librosa==0.8.0
 moviepy==1.0.3
