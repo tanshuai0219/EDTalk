@@ -371,7 +371,7 @@ Here are some examples:
 
 ## 🙏 Thanks to all contributors for their efforts
 
-We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating acolab notebook, web UI, and translation work, among others.
+We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating a colab notebook, web UI, and translation work, among others.
 
 [![contributors](https://contrib.rocks/image?repo=tanshuai0219/EDTalk)](https://github.com/tanshuai0219/EDTalk/graphs/contributors)
 
@@ -395,12 +395,13 @@ We hope more people can get involved, and we will promptly handle pull requests.
 ## 🎓 Citation
 
 ```
-@article{tan2024edtalk,
-  title={EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis},
-  author={Tan, Shuai and Ji, Bin and Bi, Mengxiao and Pan, Ye},
-  journal={arXiv preprint arXiv:2404.01647},
-  year={2024}
+@inproceedings{tan2024edtalk,
+  title = {EDTalk: Efficient Disentanglement for Emotional Talking Head Synthesis},
+  author = {Tan, Shuai and Ji, Bin and Bi, Mengxiao and Pan, Ye},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  year = {2024}
 }
+
 ```
 
 ## 🙏 Acknowledgement
