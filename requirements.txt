@@ -1,16 +1,20 @@
-# torch==1.10.0+cu111
-# torchvision==0.11.0+cu111
-# tensorboard==2.11.2
-# av==9.2.0
-# numba ==0.48
-# lvmlite==0.31.0
-# librosa==0.7.2
-
-
 numpy==1.23.0
 tqdm==4.66.4
 imageio-ffmpeg==0.5.1
+moviepy==1.0.3
+av==9.2.0
 
+# Install the appropriate torch for your version of python.
+# torch==1.10.0+cu111
+# torchvision==0.11.0+cu111
+# tensorboard==2.11.2
+
+# For python 3.8
+
+# numba ==0.48
+# librosa==0.7.1
+
+# For python 3.9
 numba==0.53.0
 librosa==0.8.0
-moviepy==1.0.3
+
