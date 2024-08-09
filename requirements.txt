@@ -32,8 +32,8 @@ librosa==0.8.0
 gradio==4.40.0
 
 
-basicsr
-gfpgan
+basicsr==1.3.5
+gfpgan==1.3.8
 tb-nightly==2.13.0a20230423 #-i https://mirrors.aliyun.com/pypi/simple
 
 facexlib
