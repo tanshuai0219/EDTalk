@@ -186,14 +186,16 @@ class Demo(nn.Module):
             self.lip_vid_target = self.audio2lip(self.audio, self.bs, self.T)[0]
             self.lip_vid_target = conv_feat(self.lip_vid_target, k_size=3, sigma=1) # torch.Size([372, 500])
 
-            len_pose = self.pose_vid_target.shape[1]
+            while self.pose_vid_target.shape[1] < self.lip_vid_target.size(0):
+                reversed_img_source = self.pose_vid_target.flip(dims=[1])
+                self.pose_vid_target = torch.cat((self.pose_vid_target, reversed_img_source), dim=1)
 
             for i in tqdm(range(self.lip_vid_target.size(0))):
                 img_target_lip = self.lip_vid_target[i:i+1]
-                if i>=len_pose:
-                    img_target_pose = self.pose_vid_target[:, -1, :, :, :]
-                else:
-                    img_target_pose = self.pose_vid_target[:, i, :, :, :]
+                # if i>=len_pose:
+                #     img_target_pose = self.pose_vid_target[:, -1, :, :, :]
+                # else:
+                img_target_pose = self.pose_vid_target[:, i, :, :, :]
 
                 img_recon = self.gen.test_EDTalk_A_use_exp_weight(self.img_source, img_target_lip, img_target_pose, self.exp_vid_target, h_start)
                 
