@@ -31,6 +31,8 @@ numba==0.53.0
 librosa==0.8.0
 gradio==4.40.0
 
-tb-nightly -i https://mirrors.aliyun.com/pypi/simple
+
 gfpgan
+tb-nightly -i https://mirrors.aliyun.com/pypi/simple
+
 facexlib
