@@ -37,6 +37,10 @@ def move_files():
         if os.path.exists(os.path.join(dest_gfpgan, file)) == False:
             shutil.move(os.path.join(source_gfpgan, file), dest_gfpgan)
 
+    if os.path.exists('data_preprocess/shape_predictor_68_face_landmarks.dat') == False:
+        shutil.move('ckpt_models/shape_predictor_68_face_landmarks.dat', 'data_preprocess/shape_predictor_68_face_landmarks.dat')
+
+
 def cleanup():
     # 删除原始的 ckpt_models 文件夹
     shutil.rmtree('ckpt_models')

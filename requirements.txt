@@ -30,3 +30,9 @@ numba==0.53.0
 librosa==0.8.0
 gradio==4.40.0
 
+pip install face-alignment
+pip install dlib
+
+pip install facexlib
+pip install tb-nightly -i https://mirrors.aliyun.com/pypi/simple
+pip install gfpgan
