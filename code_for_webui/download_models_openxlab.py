@@ -20,12 +20,12 @@ def move_files():
     create_directory(dest_ckpts)
     
     for file in os.listdir(source_ckpts):
-        if os.path.exists(dest_ckpts) == False:
+        if os.path.exists(os.path.join(dest_ckpts, file)) == False:
 
             shutil.move(os.path.join(source_ckpts, file), dest_ckpts)
     
     # 移动 EDTalk_lip_pose.pt
-    if os.path.exists(dest_ckpts) == False:
+    if os.path.exists(os.path.join(dest_ckpts, 'EDTalk_lip_pose.pt')) == False:
         shutil.move(os.path.join('ckpt_models', 'EDTalk_lip_pose.pt'), dest_ckpts)
     
     # 移动 gfpgan 文件夹中的文件
@@ -34,7 +34,7 @@ def move_files():
     create_directory(dest_gfpgan)
     
     for file in os.listdir(source_gfpgan):
-        if os.path.exists(dest_gfpgan) == False:
+        if os.path.exists(os.path.join(dest_gfpgan, file)) == False:
             shutil.move(os.path.join(source_gfpgan, file), dest_gfpgan)
 
 def cleanup():
