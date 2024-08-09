@@ -33,6 +33,6 @@ gradio==4.40.0
 face-alignment
 dlib
 
-facexlib==0.3.0
+facexlib==0.2.5
 tb-nightly -i https://mirrors.aliyun.com/pypi/simple
 gfpgan
