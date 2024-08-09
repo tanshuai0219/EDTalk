@@ -19,7 +19,7 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
     try:
         source_path = source_image if source_image else ""
         audio_driving_path = audio_file if audio_file else ""
-        pose_driving_path = pose_video if pose_video else ""
+        pose_driving_path = pose_video if pose_video else "test_data/pose_source1.mp4"
 
         # Construct the command
         if exp_type in ["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"]:
@@ -63,7 +63,7 @@ iface = gr.Interface(
         gr.Image(type="filepath",label="Select Source Image."), # Make sure the image is pre-processed using  crop_image2.py
         gr.Checkbox(label="Crop the Source Image"),
         gr.Audio(type="filepath", label="Select Audio File"),
-        gr.Video(label="Select Pose Video."),  #Make sure the video is pre-processed using crop_video.py
+        gr.Video(label="Select Pose Video. If no pose video, generate video will have the default pose"),  #Make sure the video is pre-processed using crop_video.py
         gr.Checkbox(label="Crop the Pose Video"),
         gr.Dropdown(
             choices=["I don't wanna generate emotional expression","angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"],

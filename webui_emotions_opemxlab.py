@@ -19,7 +19,7 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
     try:
         source_path = source_image if source_image else ""
         audio_driving_path = audio_file if audio_file else ""
-        pose_driving_path = pose_video if pose_video else ""
+        pose_driving_path = pose_video if pose_video else "test_data/pose_source1.mp4"
 
         # Construct the command
         if exp_type in ["angry", "contempt", "disgusted", "fear", "happy", "sad", "surprised"]:
