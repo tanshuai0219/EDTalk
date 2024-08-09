@@ -243,7 +243,7 @@ if __name__ == '__main__':
     parser.add_argument("--source_path", type=str, default='test_data/identity_source.jpg')
     parser.add_argument("--audio_driving_path", type=str, default='test_data/mouth_source.wav')
     parser.add_argument("--pose_driving_path", type=str, default='test_data/pose_source1.mp4')
-    parser.add_argument("--exp_type", type=str, default='angry') # ['angry', 'contempt', 'disgusted', 'fear', 'happy', 'sad', 'surprised']
+    parser.add_argument("--exp_type", type=str, default='angry', help='expression you want to generate, choose from [angry, contempt, disgusted, fear, happy, sad, surprised]') # ['angry', 'contempt', 'disgusted', 'fear', 'happy', 'sad', 'surprised']
     parser.add_argument("--save_path", type=str, default='res/demo_EDTalk_A_using_weights.mp4')
     parser.add_argument("--audio2lip_model_path", type=str, default='ckpts/Audio2Lip.pt')
     parser.add_argument("--model_path", type=str, default='ckpts/EDTalk.pt')

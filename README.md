@@ -21,6 +21,9 @@
 <div align="center">
   <a href="https://tanshuai0219.github.io/EDTalk/"><img src="https://img.shields.io/badge/project-EDTalk-red"></a> &ensp;
   <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/badge/Arxiv-EDTalk-blue"></a> &ensp;
+  <a href="https://github.com/tanshuai0219/EDTalk"><img src="https://img.shields.io/github/stars/tanshuai0219/EDTalk?style=social"></a> &ensp;
+
+  <!-- [![GitHub Stars](https://img.shields.io/github/stars/yuangan/EAT_code?style=social)](https://github.com/yuangan/EAT_code) -->
 <!--   <a href="https://arxiv.org/abs/2404.01647"><img src="https://img.shields.io/badge/OpenXlab-EDTalk-grenn"></a> &ensp; -->
 
 </div>
@@ -110,6 +113,9 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 #### For user-friendliness, we extracted the weights of eight common sentiments in the expression base. one can directly specify the sentiment to generate emotional talking face videos (recommended)
   ```
   python demo_EDTalk_A_using_predefined_exp_weights.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_type type/of/expression --save_path path/to/save
+
+  # example:
+  python demo_EDTalk_A_using_predefined_exp_weights.py --source_path res/results_by_facesr/demo_EDTalk_A.png --audio_driving_path test_data/mouth_source.wav --pose_driving_path test_data/pose_source1.mp4 --exp_type angry --save_path res/demo_EDTalk_A_using_weights.mp4
   ```
   ****
 
@@ -123,6 +129,10 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
   ```
   python demo_EDTalk_A.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+
+  # example:
+  python demo_EDTalk_A.py --source_path res/results_by_facesr/demo_EDTalk_A.png --audio_driving_path test_data/mouth_source.wav --pose_driving_path test_data/pose_source1.mp4 --exp_driving_path test_data/expression_source.mp4 --save_path res/demo_EDTalk_A.mp4
+
   ```
   The result will be stored in save_path.
 
@@ -137,11 +147,17 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 #### If you only want to change the lip motion of the identity source, run
   ```
    python demo_lip_pose.py --fix_pose --source_path path/to/image --audio_driving_path path/to/audio --save_path path/to/save
+   # example:
+   python demo_lip_pose.py --fix_pose --source_path test_data/identity_source.jpg --audio_driving_path test_data/mouth_source.wav --save_path res/demo_lip_pose_fix_pose.mp4
   ```
 ****
 #### Or you can additionally control the head poses on top of the above via pose_driving_path
   ```
    python demo_lip_pose.py --source_path path/to/image --audio_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
+
+   # example:
+   python demo_lip_pose.py --source_path test_data/identity_source.jpg --audio_driving_path test_data/mouth_source.wav --pose_driving_path test_data/pose_source1.mp4 --save_path res/demo_lip_pose_fix_pose.mp4
+
   ```
 
 | Source Img | EDTalk        | EDTalk + liveprotrait           |
@@ -151,7 +167,11 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 
 #### And control the lip motion via a driven video.
   ```
-   python demo_lip_pose_V.py --source_path path/to/image --audio_driving_path path/to/audio --lip_driving_path path/to/audio --pose_driving_path path/to/pose --save_path path/to/save
+   python demo_lip_pose_V.py --source_path path/to/image --audio_driving_path path/to/audio --lip_driving_path path/to/mouth --pose_driving_path path/to/pose --save_path path/to/save
+
+  # example:
+   python demo_lip_pose_V.py --source_path res/results_by_facesr/demo_lip_pose5.png --audio_driving_path test_data/mouth_source.wav --lip_driving_path test_data/mouth_source.mp4 --pose_driving_path test_data/pose_source1.mp4 --save_path demo_lip_pose_V.mp4
+
   ```
 | Source Img | demo_lip_pose_V Results           | + FaceSR           |
 |------------|--------------------------|---------------------------|
@@ -161,6 +181,10 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 #### Change the lip motion of a source video, run:
   ```
    python demo_change_a_video_lip.py --source_path path/to/video --audio_driving_path path/to/audio --save_path path/to/save
+
+   # example
+   python demo_change_a_video_lip.py --source_path test_data/pose_source1.mp4 --audio_driving_path test_data/mouth_source.wav --save_path res/demo_change_a_video_lip.mp4
+
   ```
 | Source Img | results #1           | results #2          |
 |------------|--------------------------|---------------------------|
@@ -172,6 +196,10 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
 ### Run the demo in video-driven setting (EDTalk-V):
   ```
   python demo_EDTalk_V.py --source_path path/to/image --lip_driving_path path/to/lip --audio_driving_path path/to/audio --pose_driving_path path/to/pose --exp_driving_path path/to/expression --save_path path/to/save
+
+  # example:
+  python demo_EDTalk_V.py --source_path test_data/identity_source.jpg --lip_driving_path test_data/mouth_source.mp4 --audio_driving_path test_data/mouth_source.wav --pose_driving_path test_data/pose_source1.mp4 --exp_driving_path test_data/expression_source.mp4 --save_path res/demo_EDTalk_V.mp4
+
   ```
   The result will be stored in save_path.
 
