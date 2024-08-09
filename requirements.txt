@@ -33,6 +33,6 @@ gradio==4.40.0
 
 
 gfpgan
-tb-nightly -i https://mirrors.aliyun.com/pypi/simple
+tb-nightly #-i https://mirrors.aliyun.com/pypi/simple
 
 facexlib
