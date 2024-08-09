@@ -14,7 +14,8 @@ tqdm==4.66.4
 imageio-ffmpeg==0.5.1
 moviepy==1.0.3
 av==9.2.0
-
+face-alignment
+dlib
 # Install the appropriate torch for your version of python.
 # torch==1.10.0+cu111
 # torchvision==0.11.0+cu111
@@ -29,10 +30,6 @@ av==9.2.0
 numba==0.53.0
 librosa==0.8.0
 gradio==4.40.0
-
-face-alignment
-dlib
-
-facexlib==0.2.5
+facexlib --no-cache-dir
 tb-nightly -i https://mirrors.aliyun.com/pypi/simple
 gfpgan
