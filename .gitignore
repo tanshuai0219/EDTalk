@@ -12,3 +12,6 @@ gfpgan
 *.png
 *.mp3
 *.wav
+/gradio_cached_examples/
+webui_emotions2.py
+reference.py
