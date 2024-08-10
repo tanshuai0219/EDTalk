@@ -136,7 +136,7 @@ Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YU
   ```
   The result will be stored in save_path.
 
-  **Source_path and videos used must be first cropped using scripts [crop_image2.py](data_preprocess/crop_image2.py) (download [shape_predictor_68_face_landmarks.dat](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat) and put it in ./data_preprocess dir) and [crop_video.py](data_preprocess/crop_video.py)** 
+  **Source_path and videos used must be first cropped using scripts [crop_image2.py](data_preprocess/crop_image2.py) (download [shape_predictor_68_face_landmarks.dat](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat) and put it in ./data_preprocess dir) and [crop_video.py](data_preprocess/crop_video.py). Make sure the every video' frame rate must be 25 fps**
 
   You can also use [crop_image.py](data_preprocess/crop_image.py) to crop the image, but [increase_ratio](https://github.com/tanshuai0219/EDTalk/blob/928fe3de7cf74b6a0e7db4ec90d59c85d79b8bc1/data_preprocess/crop_image.py#L76) has to be carefully set and tried several times to get the optimal result.
   <!-- For images where faces only make up a small portion of the image, we recommend using the [crop_image2.py](data_preprocess/crop_image2.py) to crop image. -->

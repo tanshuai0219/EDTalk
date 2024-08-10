@@ -148,7 +148,9 @@ class Demo(nn.Module):
         audio_driving_resample_path = os.path.join(os.path.dirname(audio_driving_path), 'resample_'+os.path.basename(audio_driving_path)[:-4]+'.wav')
 
         resample_command = f'ffmpeg -y -i {audio_driving_path} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {audio_driving_resample_path}'
-        os.system(resample_command)
+        if os.path.exists(audio_driving_resample_path) == False:
+        
+            os.system(resample_command)
         audio_driving_path = audio_driving_resample_path
 
         if need_crop_pose_video:

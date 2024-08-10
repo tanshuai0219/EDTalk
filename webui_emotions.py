@@ -32,7 +32,7 @@ def get_example():
             "test_data/mouth_source.wav",
             "res/results_by_facesr/demo_EDTalk_A.mp4",
             False,
-            "happy",
+            "surprised",
             True,
         ],
         [
@@ -41,7 +41,7 @@ def get_example():
             "test_data/test/11.wav",
             "test_data/uncrop_Obama.mp4",
             True,
-            "surprised",
+            "happy",
             True,
         ]
     ]
