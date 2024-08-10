@@ -104,7 +104,7 @@ python webui_emotions.py
 
 ## 🎬 Quick Start
 
-Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link) and put them into ./ckpts.
+Download the [checkpoints](https://drive.google.com/file/d/1EKJXpq5gwFaRfkiAs6YUZ6YEiQ-8X3H3/view?usp=drive_link)/[huggingface link](https://huggingface.co/tanhshuai0219/EDTalk/tree/main) and put them into ./ckpts.
 
 [中文用户] 可以通过这个[链接](https://openxlab.org.cn/models/detail/tanshuai0219/EDTalk/tree/main)下载权重。
 
