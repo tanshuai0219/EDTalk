@@ -47,7 +47,8 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
-- 2024.08.06 - 💻 Add the training code for fine-tuning on a specific person, and we take Obama as example.
+- 2024.08.04 - 🎉Our paper is selected as an oral presentation.
+- 2024.08.09 - 💻 Add the training code for fine-tuning on a specific person, and we take Obama as example.
 - 2024.08.06 - 🙏 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating a colab notebook, improved web UI, and translation work, among others.
 - 2024.08.04 - 🎉 Add gradio interface.
 - 2024.07.31 - 💻 Add optional face super-resolution.
