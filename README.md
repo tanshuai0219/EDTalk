@@ -250,7 +250,8 @@ Here are some examples:
 |<img src="res/results_by_facesr/RD_Radio51_000.png" width="250" ></img> | <video controls loop src="https://github.com/user-attachments/assets/b75f5a6c-0d38-4dc2-bbfa-330290f098ba" muted="false"></video>  |   <video controls loop src="https://github.com/user-attachments/assets/644100c6-608e-4266-8b94-6b61880dddbe" muted="false"></video>     |
 
 
-## 🎬 Fine tune on a specific person
+## 🎬 Fine tune on a specific person 
+There are a few issues currently, I'll be checking them carefully. Please be patient!
 **Note**: We take Obama and the path in my computer (/data/ts/xxxxxx) as example and you should replace it with your own path:
 
 - Download the Obama data from [AD-Nerf](https://github.com/YudongGuo/AD-NeRF/blob/master/dataset/vids/Obama.mp4) and put it in '/data/ts/datasets/person_specific_dataset/AD-NeRF/video/Obama.mp4'
