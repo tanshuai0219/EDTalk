@@ -13,7 +13,7 @@
   <sup>1</sup>Shanghai Jiao Tong University<br>
   <sup>2</sup>NetEase Fuxi AI Lab<br>
   <br>
-<i><strong><a href='https://eccv2024.ecva.net/' target='_blank'>ECCV 2024</a></strong></i>
+<i><strong><a href='https://eccv2024.ecva.net/' target='_blank'>ECCV 2024 Oral</a></strong></i>
 </p>
 
 
@@ -47,7 +47,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
-- 2024.08.12 - 🎉Our paper is selected as an oral presentation.
+- 2024.08.12 - 🎉 Our paper is selected as an oral presentation.
 - 2024.08.09 - 💻 Add the training code for fine-tuning on a specific person, and we take Obama as example.
 - 2024.08.06 - 🙏 We hope more people can get involved, and we will promptly handle pull requests. Currently, there are still some tasks that need assistance, such as creating a colab notebook, improved web UI, and translation work, among others.
 - 2024.08.04 - 🎉 Add gradio interface.
