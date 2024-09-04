@@ -465,6 +465,7 @@ We hope more people can get involved, and we will promptly handle pull requests.
 ## 🙏 Acknowledgement
 Some code are borrowed from following projects:
 * [LIA](https://github.com/wyhsirius/LIA)
+* [EAT](https://github.com/yuangan/EAT_code)
 * [DPE](https://github.com/OpenTalker/DPE)
 * [PD-FGC](https://github.com/Dorniwang/PD-FGC-inference)
 * [Wav2Lip](https://github.com/Rudrabha/Wav2Lip)
