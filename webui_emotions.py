@@ -91,7 +91,8 @@ def run_inference(source_image, need_crop_source_img, audio_file, pose_video, ne
         else:
             print("else")
             return None, None, gr.Markdown("Video generated failed, please retry it.")
-    except:
+    except Exception as e:
+        print(str(e))
         return None, None, gr.Markdown("Video generated failed, please retry it.")
     # return f"Output saved to: {save_path}"
 
