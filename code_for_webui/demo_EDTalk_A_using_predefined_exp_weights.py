@@ -138,7 +138,7 @@ class Demo(nn.Module):
 
         pose_driving_resample_path = os.path.join(os.path.dirname(pose_driving_path), 'resample_'+os.path.basename(pose_driving_path)[:-4]+'.mp4')
 
-        resample_command = f'ffmpeg -i {pose_driving_path} -r 25 {pose_driving_resample_path}'
+        resample_command = f'ffmpeg -i {pose_driving_path} -r 25 -y {pose_driving_resample_path}'
         os.system(resample_command)
         pose_driving_path = pose_driving_resample_path
 
