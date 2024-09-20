@@ -47,7 +47,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
-- 2024.09.20 - If you want to compare EDTalk in neutral talking head generation without emotional expression for the coming ICLR and CVPR, [demo_lip_pose.py](https://github.com/tanshuai0219/EDTalk/blob/main/demo_lip_pose.py) is recommended.
+- 2024.09.20 - If you want to compare EDTalk in neutral talking head generation without emotional expression for the coming **ICLR and CVPR**, [demo_lip_pose.py](https://github.com/tanshuai0219/EDTalk/blob/main/demo_lip_pose.py) is recommended.
 - 2024.08.28 - 🎉 I give a presentation about EDTalk at https://byuih.xetlk.com/sl/40yc8X (But it's in Chinese~).
 - 2024.08.12 - 🎉 Our paper is selected as an oral presentation.
 - 2024.08.09 - 💻 Add the training code for fine-tuning on a specific person, and we take Obama as example.
