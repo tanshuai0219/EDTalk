@@ -461,6 +461,42 @@ We hope more people can get involved, and we will promptly handle pull requests.
   year = {2024}
 }
 
+@inproceedings{tan2023emmn,
+  title={Emmn: Emotional motion memory network for audio-driven emotional talking face generation},
+  author={Tan, Shuai and Ji, Bin and Pan, Ye},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={22146--22156},
+  year={2023}
+}
+
+@inproceedings{tan2024say,
+  title={Say anything with any style},
+  author={Tan, Shuai and Ji, Bin and Ding, Yu and Pan, Ye},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={5},
+  pages={5088--5096},
+  year={2024}
+}
+
+@inproceedings{tan2024style2talker,
+  title={Style2Talker: High-Resolution Talking Head Generation with Emotion Style and Art Style},
+  author={Tan, Shuai and Ji, Bin and Pan, Ye},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={5},
+  pages={5079--5087},
+  year={2024}
+}
+
+@inproceedings{tan2024flowvqtalker,
+  title={FlowVQTalker: High-Quality Emotional Talking Face Generation through Normalizing Flow and Quantization},
+  author={Tan, Shuai and Ji, Bin and Pan, Ye},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={26317--26327},
+  year={2024}
+}
+
 ```
 
 ## 🙏 Acknowledgement
