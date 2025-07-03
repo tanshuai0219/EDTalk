@@ -473,6 +473,13 @@ We hope more people can get involved, and we will promptly handle pull requests.
   year={2023}
 }
 
+@inproceedings{tan2025fixtalk,
+  title={FixTalk: Taming Identity Leakage for High-Quality Talking Head Generation in Extreme Cases},
+  author={Tan, Shuai and Gong, Bill and Ji, Bin and Pan, Ye},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year={2025}
+}
+
 @inproceedings{tan2024say,
   title={Say anything with any style},
   author={Tan, Shuai and Ji, Bin and Ding, Yu and Pan, Ye},
