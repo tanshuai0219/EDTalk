@@ -451,6 +451,8 @@ We hope more people can get involved, and we will promptly handle pull requests.
 
 [CVPR 24] [FlowVQTalker: High-Quality Emotional Talking Face Generation through Normalizing Flow and Quantization](https://openaccess.thecvf.com/content/CVPR2024/html/Tan_FlowVQTalker_High-Quality_Emotional_Talking_Face_Generation_through_Normalizing_Flow_and_CVPR_2024_paper.html)
 
+[ICCV 25] [FixTalk: Taming Identity Leakage for High-Quality Talking Head Generation in Extreme Cases](https://arxiv.org/pdf/2507.01390)
+
 
 
 ## 🎓 Citation
