@@ -47,6 +47,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2025.07.24 - 🎉 Our new paper [FixTalk](https://arxiv.org/pdf/2507.01390) is accepted as an oral presentation by ICCV 2025. FixTalk is built on EDTalk, we look forward to seeing more innovations based on EDTalk~
 - 2024.12.30 - 🎉 Another talk about EDTalk at [https://byuih.xetlk.com/sl/40yc8X](https://wqpoq.xetlk.com/sl/1qGlJZ) (But it's in Chinese, too~).
 - 2024.10.02 - 🎉 I give an oral presentation about EDTalk at ECCV Milan.
 - 2024.09.20 - If you want to compare EDTalk in neutral talking head generation without emotional expression for the coming **ICLR and CVPR**, [demo_lip_pose.py](https://github.com/tanshuai0219/EDTalk/blob/main/demo_lip_pose.py) is recommended.
