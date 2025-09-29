@@ -47,6 +47,7 @@ Achieving disentangled control over multiple facial motions and accommodating di
 
 
 ## 🔥 Update
+- 2025.09.28 - 🎉 Our new paper [FixTalk](https://arxiv.org/pdf/2507.01390) is selected as best paper finalist by ICCV 2025. FixTalk is built on EDTalk, we look forward to seeing more innovations based on EDTalk~
 - 2025.07.24 - 🎉 Our new paper [FixTalk](https://arxiv.org/pdf/2507.01390) is accepted as an oral presentation by ICCV 2025. FixTalk is built on EDTalk, we look forward to seeing more innovations based on EDTalk~
 - 2024.12.30 - 🎉 Another talk about EDTalk at [https://byuih.xetlk.com/sl/40yc8X](https://wqpoq.xetlk.com/sl/1qGlJZ) (But it's in Chinese, too~).
 - 2024.10.02 - 🎉 I give an oral presentation about EDTalk at ECCV Milan.
